@@ -17,7 +17,7 @@
     position: absolute;
     width: 40px; /* Adjust size as needed */
     height: 40px; /* Adjust size as needed */
-    background: rgba(255, 0, 0, 0.5); /* Red blush color with transparency */
+    background: rgba(226, 2, 2, 0.5); /* Red blush color with transparency */
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
