@@ -1,0 +1,49 @@
+.logo-container {
+    position: relative;
+    display: inline-block; /* Ensure it takes up only the necessary space */
+  }
+  
+  .logo {
+    height: auto;
+    width: 200px; /* Adjust this size as needed */
+    transition: all 0.3s ease; /* Smooth transition for effects */
+    position: relative;
+    z-index: 1;
+  }
+  
+  .logo-container::before,
+  .logo-container::after {
+    content: '';
+    position: absolute;
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    background: rgba(255, 0, 0, 0.5); /* Red blush color with transparency */
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Ensure pseudo-elements don't interfere with clicks */
+    z-index: 20;
+  }
+  
+  .logo-container::before {
+    left: 10%; /* Position the left blush */
+  }
+  
+  .logo-container::after {
+    right: 10%; /* Position the right blush */
+  }
+  
+  .logo-container:hover::before,
+  .logo-container:hover::after,
+  .logo-container:active::before,
+  .logo-container:active::after {
+    opacity: 1;
+  }
+  
+  
+  
+  
+  
+  

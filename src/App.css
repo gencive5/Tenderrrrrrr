@@ -1,0 +1,220 @@
+/* Resetting default styles */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* Custom container */
+.custom-container {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+/* Main zone styles */
+.main-zone {
+  background-color: white;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+}
+
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  width: 65%;
+  z-index: 100;
+  padding-top: 2rem;
+}
+
+.logo {
+  width: 30%;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+
+/* Carousel styling */
+.carousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;  /* Restore the height */
+  padding-bottom: 5vh;  /* Adjust spacing */
+  position: relative;  /* Ensures other elements can stack */
+  overflow: hidden;  /* Prevents overflow issues */
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;  /* Ensure carousel fills container */
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: absolute; /* Stack slides */
+  top: 0;
+  left: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  z-index: 1; /* Ensure it's above the background */
+}
+
+.carousel-item-wrapper img {
+  width: auto;
+  height: 80%;  /* Make the image take up the carousel height */
+  object-fit: contain;
+  z-index: 2; /* Ensure the images are above other elements */
+  padding: 1rem;
+  margin: 2rem;
+  overflow: hidden;
+}
+
+
+
+
+.carousel-item.swipe-left {
+  animation: swipe-left 0.6s forwards;
+}
+
+.carousel-item.swipe-right {
+  animation: swipe-right 0.6s forwards;
+}
+
+@keyframes swipe-left {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes swipe-right {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+
+
+
+/* Text styles */
+.texte {
+  font-family: 'arial5';
+  font-size: 1.1rem;
+  color: #fd0845;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+
+
+
+/* Gradient canvas */
+#gradient-canvas {
+  width: 100%;
+  height: 100%;
+  --gradient-color-1: #fcfcfc; 
+  --gradient-color-2: #880808; 
+  --gradient-color-3: #e4e2e2;  
+  --gradient-color-4: #e4e2e2;
+  /* Add your gradient properties here */
+}
+
+
+.button-container {
+  position: fixed;
+  bottom: 2rem; /* Position buttons at the bottom */
+  display: flex;
+  justify-content: space-between;
+  width: 60%; /* Adjust button container width */
+  max-width: 300px;
+}
+
+.yes-button, .no-button {
+ 
+  font-size: 1rem;
+  
+  cursor: pointer;
+  background-color: #aa0e0e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.no-icon {
+  width: 40px; /* Set width of the SVG */
+  height: 40px; /* Set height of the SVG */
+}
+
+.no-button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+/* Hover effect should not affect the image */
+.no-button:hover {
+  background-color: #c82333; /* Adjust hover color for the button */
+}
+
+
+.yes-button {
+  
+  margin-right: 2rem;
+}
+
+.yes-button:hover {
+  background-color: #6d0404;
+}
+
+.no-button:hover {
+  background-color: #c82333;
+}
+
+.yes-icon {
+  width: 40px; /* Set width of the SVG */
+  height: 40px; /* Set height of the SVG */
+}
