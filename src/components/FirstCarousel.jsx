@@ -8,7 +8,6 @@ import loaf1 from '../assets/images/loaf1.png';
 import loaf2 from '../assets/images/loaf2.png';
 import claquettes from '../assets/images/claquettes.png';
 import spaghetti from '../assets/images/spaghetti2.png';
-import playboy from '../assets/images/playboy.png';
 import platocombinado from '../assets/images/platocombinado2.png';
 import soap from '../assets/images/soap.png';
 import bottom from '../assets/images/bottomburger.png';
@@ -166,7 +165,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(9)} 
         >
-          <img className="carousel-img" src={playboy} alt="Slide 10" />
+          <img className="carousel-img" src={woman} alt="Slide 10" />
         </div>       
 
       {/* Eleventh Slide */}
