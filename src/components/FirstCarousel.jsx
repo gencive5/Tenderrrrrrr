@@ -1,27 +1,33 @@
 import React, { useState, useRef } from 'react';
-import chipscrab from '../assets/images/chipscrab.png';
-import ikea from '../assets/images/ikeabag.png';
-import fish from '../assets/images/fish1.png';
-import cat from '../assets/images/jarcat.png';
-import oj from '../assets/images/oj.png';
-import loaf1 from '../assets/images/loaf1.png';
-import loaf2 from '../assets/images/loaf2.png';
-import claquettes from '../assets/images/claquettes.png';
-import spaghetti from '../assets/images/spaghetti2.png';
-import platocombinado from '../assets/images/platocombinado2.png';
-import soap from '../assets/images/soap.png';
-import bottom from '../assets/images/bottomburger.png';
-import plato2 from '../assets/images/platocombinado4.png';
-import cig from '../assets/images/longlongcig.png';
-import mop from '../assets/images/mop.png';
-import meduse from '../assets/images/meduse.png';
-import handi from '../assets/images/handi.png';
-import woman from '../assets/images/woman.png';
-import sun from '../assets/images/sun.png';
-import tin from '../assets/images/tin.png';
-import rat from '../assets/images/rat.png';
-import fragile from '../assets/images/fragile2.png';
+import adidas from '../assets/images/adidas.png';
 import confidence from '../assets/images/confidence.png';
+//import couple from '../assets/images/couple.png';
+import flower from '../assets/images/flower.png';
+import fragile from '../assets/images/fragile.png';
+import framboise from '../assets/images/framboise.png';
+import hair from '../assets/images/hair.png';
+import handi from '../assets/images/handi.png';
+import hotdog from '../assets/images/hotdog.png';
+import legs from '../assets/images/legs2.png';
+import cig from '../assets/images/longlongcig.png';
+import manipuladora from '../assets/images/manipuladora.png';
+import mardi from '../assets/images/mardi.png';
+import mop from '../assets/images/mop.png';
+//import meduse from '../assets/images/meduse.png';
+import megot from '../assets/images/megot.png';
+//import paris from '../assets/images/paris.png';
+import petitpois from '../assets/images/petitpois.png';
+//import plant from '../assets/images/plant.png';
+//import platocombinado from '../assets/images/platocombinado2.png';
+//import playboy from '../assets/images/playboy.png';
+//import rock from '../assets/images/rocktoppings.png';
+import soap from '../assets/images/soap.png';
+//import stanley from '../assets/images/stanley.png';
+//import max from '../assets/images/stanleymax.png';
+//import sun from '../assets/images/sun.png';
+//import tin from '../assets/images/tin.png';
+//import vrac from '../assets/images/vrac.png';
+//import woman from '../assets/images/woman.png'; 
 
 import { CLASSES } from '@splidejs/splide';
 
@@ -96,28 +102,28 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(0)} // Apply dynamic transform for the first slide
         >
-          <img className="carousel-img" src={chipscrab} alt="Slide 1" />
+          <img className="carousel-img" src={adidas} alt="Slide 1" />
         </div>
         {/* Second Slide */}
         <div
           className="carousel-item-wrapper"
           style={getTransformStyle(1)} // Apply dynamic transform for the second slide
         >
-          <img className="carousel-img" src={ikea} alt="Slide 2" />
+          <img className="carousel-img" src={confidence} alt="Slide 2" />
         </div>
         {/* Third Slide */}
         <div
           className="carousel-item-wrapper"
           style={getTransformStyle(2)} // Apply dynamic transform for the third slide
         >
-          <img className="carousel-img" src={fish} alt="Slide 3" />
+          <img className="carousel-img" src={megot} alt="Slide 3" />
         </div>
         {/* Fourth Slide */}
         <div
           className="carousel-item-wrapper"
           style={getTransformStyle(3)} // Apply dynamic transform for the fourth slide
         >
-          <img className="carousel-img" src={loaf1} alt="Slide 4" />
+          <img className="carousel-img" src={flower} alt="Slide 4" />
         </div>
 
         {/* Fifth Slide */}
@@ -125,7 +131,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(4)} // Apply dynamic transform for the fourth slide
         >
-          <img className="carousel-img" src={oj} alt="Slide 5" />
+          <img className="carousel-img" src={fragile} alt="Slide 5" />
         </div>
 
         {/* Sixth Slide */}
@@ -133,7 +139,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(5)} // Apply dynamic transform for the fourth slide
         >
-          <img className="carousel-img" src={claquettes} alt="Slide 6" />
+          <img className="carousel-img" src={framboise} alt="Slide 6" />
         </div>
 
       {/* Seventh Slide */}
@@ -141,7 +147,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(6)} 
         >
-          <img className="carousel-img" src={plato2} alt="Slide 7" />
+          <img className="carousel-img" src={hair} alt="Slide 7" />
         </div>
 
          {/* Eighth Slide */}
@@ -149,7 +155,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(7)} 
         >
-          <img className="carousel-img" src={loaf2} alt="Slide 8" />
+          <img className="carousel-img" src={handi} alt="Slide 8" />
         </div>
       
       {/* Ninth Slide */}
@@ -157,7 +163,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(8)} 
         >
-          <img className="carousel-img" src={spaghetti} alt="Slide 9" />
+          <img className="carousel-img" src={hotdog} alt="Slide 9" />
         </div>
 
       {/* Tenth Slide */}
@@ -165,7 +171,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(9)} 
         >
-          <img className="carousel-img" src={woman} alt="Slide 10" />
+          <img className="carousel-img" src={legs} alt="Slide 10" />
         </div>       
 
       {/* Eleventh Slide */}
@@ -173,7 +179,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(10)} 
         >
-          <img className="carousel-img" src={platocombinado} alt="Slide 11" />
+          <img className="carousel-img" src={petitpois} alt="Slide 11" />
         </div>      
 
       {/* Twelvth Slide */}
@@ -205,7 +211,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(14)} 
         >
-          <img className="carousel-img" src={handi} alt="Slide 15" />
+          <img className="carousel-img" src={manipuladora} alt="Slide 15" />
         </div>     
 
       </div>
