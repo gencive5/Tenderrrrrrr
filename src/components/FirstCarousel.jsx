@@ -23,11 +23,11 @@ import petitpois from '../assets/images/petitpois.png';
 import rock from '../assets/images/rocktoppings.png';
 import soap from '../assets/images/soap.png';
 //import stanley from '../assets/images/stanley.png';
-//import max from '../assets/images/stanleymax.png';
+import max from '../assets/images/stanleymax.png';
 import sun from '../assets/images/sun.png';
 //import tin from '../assets/images/tin.png';
-//import vrac from '../assets/images/vrac.png';
-//import woman from '../assets/images/woman.png'; 
+import vrac from '../assets/images/vrac.png';
+import woman from '../assets/images/woman.png'; 
 
 import { CLASSES } from '@splidejs/splide';
 
@@ -57,10 +57,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
         // Swipe left -> next slide
-        handleSelect((activeIndex + 1) % 17); // Adjust for number of slides
+        handleSelect((activeIndex + 1) % 20); // Adjust for number of slides
       } else {
         // Swipe right -> previous slide
-        handleSelect((activeIndex - 1 + 17) % 17);
+        handleSelect((activeIndex - 1 + 20) % 20);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
@@ -230,9 +230,33 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           <img className="carousel-img" src={sun} alt="Slide 17" />
         </div>        
 
+         {/* Eighteenth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(17)} 
+        >
+          <img className="carousel-img" src={max} alt="Slide 18" />
+        </div>    
+
+         {/* Nineteenth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(18)} 
+        >
+          <img className="carousel-img" src={vrac} alt="Slide 19" />
+        </div>    
+
+         {/* Twentieth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(19)} 
+        >
+          <img className="carousel-img" src={woman} alt="Slide 20" />
+        </div>   
+
       </div>
     </div>
   );
-}
+} 
 
 export default TinderLikeCarousel;
