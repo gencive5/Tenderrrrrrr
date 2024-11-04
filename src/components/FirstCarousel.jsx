@@ -20,11 +20,11 @@ import petitpois from '../assets/images/petitpois.png';
 //import plant from '../assets/images/plant.png';
 //import platocombinado from '../assets/images/platocombinado2.png';
 //import playboy from '../assets/images/playboy.png';
-//import rock from '../assets/images/rocktoppings.png';
+import rock from '../assets/images/rocktoppings.png';
 import soap from '../assets/images/soap.png';
 //import stanley from '../assets/images/stanley.png';
 //import max from '../assets/images/stanleymax.png';
-//import sun from '../assets/images/sun.png';
+import sun from '../assets/images/sun.png';
 //import tin from '../assets/images/tin.png';
 //import vrac from '../assets/images/vrac.png';
 //import woman from '../assets/images/woman.png'; 
@@ -57,10 +57,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
         // Swipe left -> next slide
-        handleSelect((activeIndex + 1) % 15); // Adjust for number of slides
+        handleSelect((activeIndex + 1) % 17); // Adjust for number of slides
       } else {
         // Swipe right -> previous slide
-        handleSelect((activeIndex - 1 + 15) % 15);
+        handleSelect((activeIndex - 1 + 17) % 17);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
@@ -213,6 +213,22 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
         >
           <img className="carousel-img" src={manipuladora} alt="Slide 15" />
         </div>     
+
+           {/* Sixteenth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(15)} 
+        >
+          <img className="carousel-img" src={rock} alt="Slide 16" />
+        </div>  
+
+           {/* Seventeenth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(16)} 
+        >
+          <img className="carousel-img" src={sun} alt="Slide 17" />
+        </div>        
 
       </div>
     </div>
