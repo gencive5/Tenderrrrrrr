@@ -13,19 +13,18 @@ import cig from '../assets/images/longlongcig.png';
 import manipuladora from '../assets/images/manipuladora.png';
 import mardi from '../assets/images/mardi.png';
 import mop from '../assets/images/mop.png';
-//import meduse from '../assets/images/meduse.png';
+import meduse from '../assets/images/meduse.png';
 import megot from '../assets/images/megot.png';
-//import paris from '../assets/images/paris.png';
+import paris from '../assets/images/paris.png';
 import petitpois from '../assets/images/petitpois.png';
-//import plant from '../assets/images/plant.png';
-//import platocombinado from '../assets/images/platocombinado2.png';
-//import playboy from '../assets/images/playboy.png';
+import plant from '../assets/images/plant.png';
+import platocombinado from '../assets/images/platocombinado2.png';
+import playboy from '../assets/images/playboy.png';
 import rock from '../assets/images/rocktoppings.png';
 import soap from '../assets/images/soap.png';
-//import stanley from '../assets/images/stanley.png';
+import stanley from '../assets/images/stanley.png';
 import max from '../assets/images/stanleymax.png';
 import sun from '../assets/images/sun.png';
-//import tin from '../assets/images/tin.png';
 import vrac from '../assets/images/vrac.png';
 import woman from '../assets/images/woman.png'; 
 
@@ -57,10 +56,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
         // Swipe left -> next slide
-        handleSelect((activeIndex + 1) % 20); // Adjust for number of slides
+        handleSelect((activeIndex + 1) % 26); // Adjust for number of slides
       } else {
         // Swipe right -> previous slide
-        handleSelect((activeIndex - 1 + 20) % 20);
+        handleSelect((activeIndex - 1 + 26) % 26);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
@@ -253,6 +252,54 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
         >
           <img className="carousel-img" src={woman} alt="Slide 20" />
         </div>   
+
+         {/* Twenty first Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(20)} 
+        >
+          <img className="carousel-img" src={playboy} alt="Slide 21" />
+        </div>   
+
+         {/* Twenty second Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(21)} 
+        >
+          <img className="carousel-img" src={stanley} alt="Slide 22" />
+        </div>  
+
+        {/* Twenty third Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(22)} 
+        >
+          <img className="carousel-img" src={plant} alt="Slide 23" />
+        </div>  
+
+        {/* Twenty fourth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(23)} 
+        >
+          <img className="carousel-img" src={platocombinado} alt="Slide 24" />
+        </div>  
+        
+          {/* Twenty fifth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(24)} 
+        >
+          <img className="carousel-img" src={meduse} alt="Slide 25" />
+        </div> 
+
+          {/* Twenty sixth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(25)} 
+        >
+          <img className="carousel-img" src={paris} alt="Slide 26" />
+        </div> 
 
       </div>
     </div>
