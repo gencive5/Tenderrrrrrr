@@ -27,8 +27,15 @@ import sun from '../assets/images/sun.png';
 import vrac from '../assets/images/vrac.png';
 import woman from '../assets/images/woman.png'; 
 import gel from '../assets/images/gel.png'; 
+import soup from '../assets/images/soup.png'; 
+import shoes from '../assets/images/shoes.png'; 
+import signal from '../assets/images/signal.png'; 
+import rip from '../assets/images/rip.png'; 
+import local from '../assets/images/local.png'; 
+import chair from '../assets/images/chair.png'; 
+import faim from '../assets/images/faim.png'; 
 
-import { CLASSES } from '@splidejs/splide';
+//import { CLASSES } from '@splidejs/splide';
 
 
 
@@ -56,10 +63,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
         // Swipe left -> next slide
-        handleSelect((activeIndex + 1) % 27); // Adjust for number of slides
+        handleSelect((activeIndex + 1) % 34); // Adjust for number of slides
       } else {
         // Swipe right -> previous slide
-        handleSelect((activeIndex - 1 + 27) % 27);
+        handleSelect((activeIndex - 1 + 34) % 34);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
@@ -307,6 +314,62 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           style={getTransformStyle(26)} 
         >
           <img className="carousel-img" src={mardi} alt="Slide 27" />
+        </div> 
+
+         {/* Twenty eighth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(27)} 
+        >
+          <img className="carousel-img" src={soup} alt="Slide 28" />
+        </div> 
+
+         {/* Twenty ninth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(28)} 
+        >
+          <img className="carousel-img" src={shoes} alt="Slide 29" />
+        </div> 
+
+         {/* Thirthieth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(29)} 
+        >
+          <img className="carousel-img" src={signal} alt="Slide 30" />
+        </div> 
+
+         {/* Thirty first Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(30)} 
+        >
+          <img className="carousel-img" src={rip} alt="Slide 31" />
+        </div> 
+
+          {/* Thirty second Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(31)} 
+        >
+          <img className="carousel-img" src={faim} alt="Slide 32" />
+        </div> 
+
+          {/* Thirty third Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(32)} 
+        >
+          <img className="carousel-img" src={local} alt="Slide 33" />
+        </div> 
+
+          {/* Thirty fourth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(33)} 
+        >
+          <img className="carousel-img" src={chair} alt="Slide 34" />
         </div> 
 
       </div>
