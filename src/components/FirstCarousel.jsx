@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
-import adidas from '../assets/images/adidas.png';
-import confidence from '../assets/images/confidence.png';
-//import couple from '../assets/images/couple.png';
+//import adidas from '../assets/images/adidas.png';
+import couple from '../assets/images/couple.png';
 import flower from '../assets/images/flower.png';
 import fragile from '../assets/images/fragile.png';
 import framboise from '../assets/images/framboise.png';
@@ -27,6 +26,7 @@ import max from '../assets/images/stanleymax.png';
 import sun from '../assets/images/sun.png';
 import vrac from '../assets/images/vrac.png';
 import woman from '../assets/images/woman.png'; 
+import gel from '../assets/images/gel.png'; 
 
 import { CLASSES } from '@splidejs/splide';
 
@@ -56,10 +56,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
         // Swipe left -> next slide
-        handleSelect((activeIndex + 1) % 26); // Adjust for number of slides
+        handleSelect((activeIndex + 1) % 27); // Adjust for number of slides
       } else {
         // Swipe right -> previous slide
-        handleSelect((activeIndex - 1 + 26) % 26);
+        handleSelect((activeIndex - 1 + 27) % 27);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
@@ -101,14 +101,14 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           className="carousel-item-wrapper"
           style={getTransformStyle(0)} // Apply dynamic transform for the first slide
         >
-          <img className="carousel-img" src={adidas} alt="Slide 1" />
+          <img className="carousel-img" src={gel} alt="Slide 1" />
         </div>
         {/* Second Slide */}
         <div
           className="carousel-item-wrapper"
           style={getTransformStyle(1)} // Apply dynamic transform for the second slide
         >
-          <img className="carousel-img" src={confidence} alt="Slide 2" />
+          <img className="carousel-img" src={couple} alt="Slide 2" />
         </div>
         {/* Third Slide */}
         <div
@@ -299,6 +299,14 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           style={getTransformStyle(25)} 
         >
           <img className="carousel-img" src={paris} alt="Slide 26" />
+        </div> 
+
+          {/* Twenty seventh Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(26)} 
+        >
+          <img className="carousel-img" src={mardi} alt="Slide 27" />
         </div> 
 
       </div>
