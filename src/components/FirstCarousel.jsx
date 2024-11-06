@@ -33,7 +33,18 @@ import signal from '../assets/images/signal.png';
 import rip from '../assets/images/rip.png'; 
 import local from '../assets/images/local.png'; 
 import chair from '../assets/images/chair.png'; 
-import faim from '../assets/images/faim.png'; 
+import faim from '../assets/images/faim.png';
+import tube from '../assets/images/tube.png';
+import sunset from '../assets/images/sunset.png';
+import spider from '../assets/images/spider.png';
+import savon from '../assets/images/savon.png';
+import purple from '../assets/images/purple.png';
+import melon from '../assets/images/melon.png';
+import green from '../assets/images/green.png';
+import chaise from '../assets/images/chaise.png';
+import car from '../assets/images/car.png';
+import amethyst from '../assets/images/amethyst.png';
+
 
 //import { CLASSES } from '@splidejs/splide';
 
@@ -63,10 +74,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
         // Swipe left -> next slide
-        handleSelect((activeIndex + 1) % 34); // Adjust for number of slides
+        handleSelect((activeIndex + 1) % 44); // Adjust for number of slides
       } else {
         // Swipe right -> previous slide
-        handleSelect((activeIndex - 1 + 34) % 34);
+        handleSelect((activeIndex - 1 + 44) % 44);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
@@ -370,6 +381,86 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           style={getTransformStyle(33)} 
         >
           <img className="carousel-img" src={chair} alt="Slide 34" />
+        </div> 
+
+          {/* Thirty fifth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(34)} 
+        >
+          <img className="carousel-img" src={tube} alt="Slide 35" />
+        </div> 
+
+          {/* Thirty sixth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(35)} 
+        >
+          <img className="carousel-img" src={sunset} alt="Slide 36" />
+        </div> 
+
+          {/* Thirty seventh Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(36)} 
+        >
+          <img className="carousel-img" src={spider} alt="Slide 37" />
+        </div> 
+
+          {/* Thirty eighth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(37)} 
+        >
+          <img className="carousel-img" src={savon} alt="Slide 38" />
+        </div> 
+
+          {/* Thirty ninth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(38)} 
+        >
+          <img className="carousel-img" src={purple} alt="Slide 39" />
+        </div> 
+
+          {/* Fortieth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(39)} 
+        >
+          <img className="carousel-img" src={melon} alt="Slide 40" />
+        </div> 
+
+         {/* Forty first Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(40)} 
+        >
+          <img className="carousel-img" src={green} alt="Slide 41" />
+        </div> 
+
+         {/* Forty second Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(41)} 
+        >
+          <img className="carousel-img" src={chaise} alt="Slide 42" />
+        </div> 
+
+         {/* Forty third Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(42)} 
+        >
+          <img className="carousel-img" src={car} alt="Slide 43" />
+        </div> 
+
+         {/* Forty fourth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(43)} 
+        >
+          <img className="carousel-img" src={amethyst} alt="Slide 44" />
         </div> 
 
       </div>
