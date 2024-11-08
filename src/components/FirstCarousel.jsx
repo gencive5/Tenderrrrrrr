@@ -44,6 +44,13 @@ import green from '../assets/images/green.png';
 import chaise from '../assets/images/chaise.png';
 import car from '../assets/images/car.png';
 import amethyst from '../assets/images/amethyst.png';
+import treize from '../assets/images/treize.png';
+import relax from '../assets/images/relax.png';
+import doliprane from '../assets/images/doliprane.png';
+import cookie from '../assets/images/cookie.png';
+import fitness from '../assets/images/fitness.png';
+import cats from '../assets/images/cats.png';
+import alien from '../assets/images/alien.png';
 
 
 //import { CLASSES } from '@splidejs/splide';
@@ -74,10 +81,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
         // Swipe left -> next slide
-        handleSelect((activeIndex + 1) % 44); // Adjust for number of slides
+        handleSelect((activeIndex + 1) % 50); // Adjust for number of slides
       } else {
         // Swipe right -> previous slide
-        handleSelect((activeIndex - 1 + 44) % 44);
+        handleSelect((activeIndex - 1 + 50) % 50);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
@@ -461,6 +468,62 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           style={getTransformStyle(43)} 
         >
           <img className="carousel-img" src={amethyst} alt="Slide 44" />
+        </div> 
+
+          {/* Forty fifth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(44)} 
+        >
+          <img className="carousel-img" src={treize} alt="Slide 45" />
+        </div> 
+
+          {/* Forty sixth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(45)} 
+        >
+          <img className="carousel-img" src={relax} alt="Slide 46" />
+        </div> 
+
+          {/* Forty seventh Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(46)} 
+        >
+          <img className="carousel-img" src={doliprane} alt="Slide 47" />
+        </div> 
+        
+         {/* Forty eighth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(47)} 
+        >
+          <img className="carousel-img" src={cookie} alt="Slide 48" />
+        </div> 
+
+         {/* Forty ninth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(48)} 
+        >
+          <img className="carousel-img" src={fitness} alt="Slide 49" />
+        </div> 
+
+         {/* Fiftieth Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(49)} 
+        >
+          <img className="carousel-img" src={cats} alt="Slide 50" />
+        </div> 
+
+         {/* Fifty first Slide */}
+      <div
+          className="carousel-item-wrapper"
+          style={getTransformStyle(50)} 
+        >
+          <img className="carousel-img" src={alien} alt="Slide 51" />
         </div> 
 
       </div>
