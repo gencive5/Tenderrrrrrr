@@ -11,7 +11,7 @@ body, html {
   text-align: center;
 }
 
-/* Custom container */
+
 .custom-container {
   height: 100vh;
   width: 100%;
@@ -22,7 +22,7 @@ body, html {
   background: transparent;
 }
 
-/* Main zone styles */
+
 .main-zone {
   background: transparent;
   height: 100vh;
@@ -55,16 +55,16 @@ body, html {
 }
 
 
-/* Carousel styling */
+
 .carousel-container {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 70vh;  /* Restore the height */
-  padding-bottom: 5vh;  /* Adjust spacing */
-  position: relative;  /* Ensures other elements can stack */
-  overflow: hidden;  /* Prevents overflow issues */
+  height: 70vh;  
+  padding-bottom: 5vh; 
+  position: relative;  
+  overflow: hidden; 
 
 }
 
@@ -73,7 +73,7 @@ body, html {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;  /* Ensure carousel fills container */
+  height: 100%;  
   position: relative;
   overflow: hidden;
   
@@ -93,7 +93,7 @@ body, html {
 
 .carousel-item-wrapper img {
   width: auto;
-  height: 80%;  /* Make the image take up the carousel height */
+  height: 80%;  
   object-fit: contain;
   padding: 1rem;
   margin: 2rem;
@@ -133,7 +133,6 @@ body, html {
 
 
 
-/* Text styles */
 .texte {
   font-family: 'arial5';
   font-size: 1.1rem;
@@ -146,8 +145,6 @@ body, html {
 
 
 
-
-/* Gradient canvas */
 #gradient-canvas {
   width: 100%;
   height: 100%;
@@ -156,7 +153,7 @@ body, html {
   --gradient-color-3: #ffffff;  
   --gradient-color-4: #e4e2e2;
   
-  position: absolute; /* Change to absolute to set its layer position */
+  position: absolute; 
   top: 0;
   left: 0;
 
@@ -165,43 +162,21 @@ body, html {
 
 .button-container {
   position: fixed;
-  bottom: 2rem; /* Position buttons at the bottom */
+  bottom: 2rem;
   display: flex;
   justify-content: space-between;
-  width: 60%; /* Adjust button container width */
+  width: 60%; 
   max-width: 300px;
 }
 
-.yes-button, .no-button {
- 
+.yes-button {
   font-size: 1rem;
-  
   cursor: pointer;
-  background-color: #aa0e0e;
-  color: white;
   border: none;
-  border-radius: 5px;
   transition: background-color 0.3s ease;
-}
-
-.no-icon {
-  width: 40px; /* Set width of the SVG */
-  height: 40px; /* Set height of the SVG */
-}
-
-.no-button {
   background-color: transparent;
-  border: none;
   padding: 10px;
-  cursor: pointer;
-  margin-left: 2rem;
 }
-
-/* Hover effect should not affect the image */
-.no-button:hover {
-  background-color: #c82333; /* Adjust hover color for the button */
-}
-
 
 .yes-button {
   
@@ -212,11 +187,38 @@ body, html {
   background-color: #6d0404;
 }
 
-.no-button:hover {
-  background-color: #c82333;
+.yes-icon {
+  width: 40px; 
+  height: 40px; 
 }
 
-.yes-icon {
-  width: 40px; /* Set width of the SVG */
-  height: 40px; /* Set height of the SVG */
+.no-button {
+ 
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #aa0e0e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
+
+.no-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.no-button {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+
+.no-button:hover {
+  background-color: #c82333; 
+}
+
+
