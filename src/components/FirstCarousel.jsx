@@ -115,6 +115,13 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     setActiveIndex(selectedIndex);
   };
 
+  const handleSlideClick = () => {
+    // Trigger haptic feedback
+    if (navigator.vibrate) {
+      navigator.vibrate(50); // Vibrate for 50ms
+    }
+  };
+
   const getTransformStyle = (index) => {
     if (dragging && activeIndex === index) {
       return {
@@ -147,6 +154,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
             key={index}
             className="carousel-item-wrapper"
             style={getTransformStyle(index)}
+            onClick={handleSlideClick} // Add click handler for haptic feedback
           >
             <img className="carousel-img" src={imgSrc} alt={`Slide ${index + 1}`} />
           </div>
