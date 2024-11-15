@@ -116,9 +116,9 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
   };
 
   const handleSlideClick = () => {
-    // Trigger haptic feedback
+    // Trigger haptic feedback with proper checks
     if (navigator.vibrate) {
-      navigator.vibrate(50); // Vibrate for 50ms
+      navigator.vibrate([30]); // Vibrate for 30ms
     }
   };
 
