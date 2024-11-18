@@ -17,7 +17,7 @@ import megot from '../assets/images/megot.png';
 import paris from '../assets/images/paris.png';
 import petitpois from '../assets/images/petitpois.png';
 import plant from '../assets/images/plant.png';
-import platocombinado from '../assets/images/platocombinado2.png';
+import chico from '../assets/images/chico.png';
 import playboy from '../assets/images/playboy.png';
 import rock from '../assets/images/rocktoppings.png';
 import soap from '../assets/images/soap.png';
@@ -51,6 +51,19 @@ import cookie from '../assets/images/cookie.png';
 import fitness from '../assets/images/fitness.png';
 import cats from '../assets/images/cats.png';
 import alien from '../assets/images/alien.png';
+import eolienne from '../assets/images/eolienne.png';
+import ex from '../assets/images/ex.png';
+import ghost from '../assets/images/ghost3.png';
+import mommy from '../assets/images/mommy2.png';
+import normal from '../assets/images/normal.png';
+import pal from '../assets/images/pal.png';
+import tomatos from '../assets/images/tomatos.png';
+import tortilla from '../assets/images/tortilla.png';
+import wolves from '../assets/images/wolves.png';
+import orange from '../assets/images/orange.png';
+import guy from '../assets/images/guy2.png';
+import cone from '../assets/images/cone.png';
+
 
 function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
   const [dragStartX, setDragStartX] = useState(0);
@@ -64,10 +77,10 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
   const imageArray = [
     gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog, legs,
     petitpois, soap, cig, mop, manipuladora, rock, sun, max, vrac, woman, playboy,
-    stanley, plant, platocombinado, meduse, paris, mardi, soup, shoes, signal,
+    stanley, plant, chico, meduse, paris, mardi, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, fitness,
-    cats, alien,
+    cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, orange, guy, cone, 
   ];
 
   // Function to shuffle an array
