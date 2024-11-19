@@ -53,7 +53,7 @@ import cats from '../assets/images/cats.png';
 import alien from '../assets/images/alien.png';
 import eolienne from '../assets/images/eolienne.png';
 import ex from '../assets/images/ex.png';
-import ghost from '../assets/images/ghost3.png';
+import ghost from '../assets/images/ghost.png';
 import mommy from '../assets/images/mommy2.png';
 import normal from '../assets/images/normal.png';
 import pal from '../assets/images/pal.png';
@@ -63,6 +63,21 @@ import wolves from '../assets/images/wolves.png';
 import orange from '../assets/images/orange.png';
 import guy from '../assets/images/guy2.png';
 import cone from '../assets/images/cone.png';
+import aceite from '../assets/images/aceite.png';
+import cables from '../assets/images/cables.png';
+import carrots from '../assets/images/carrots.png';
+import chairs from '../assets/images/chairs.png';
+import day from '../assets/images/day.png';
+import fraise from '../assets/images/fraise.png';
+import papier from '../assets/images/papier.png';
+import lime from '../assets/images/lime.png';
+import oranges from '../assets/images/oranges.png';
+import orb from '../assets/images/orb.png';
+import salsa from '../assets/images/salsa.png';
+import seau from '../assets/images/seau.png';
+import stone from '../assets/images/stone.png';
+import tpe from '../assets/images/tpe.png';
+
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
 
@@ -82,7 +97,8 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     stanley, plant, chico, meduse, paris, mardi, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, fitness,
-    cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, orange, guy, cone,
+    cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, 
+    orange, guy, cone, aceite, cables, carrots, chairs, day, fraise, papier, lime, oranges, orb, salsa, seau, stone, tpe, 
   ];
 
   // Function to shuffle an array
