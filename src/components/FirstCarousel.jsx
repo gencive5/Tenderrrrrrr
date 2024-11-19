@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-// Import your image assets
+// Images
 import couple from '../assets/images/couple.png';
 import flower from '../assets/images/flower.png';
 import fragile from '../assets/images/fragile.png';
@@ -63,12 +63,14 @@ import wolves from '../assets/images/wolves.png';
 import orange from '../assets/images/orange.png';
 import guy from '../assets/images/guy2.png';
 import cone from '../assets/images/cone.png';
-
+import like from '../assets/images/like.svg';
+import dislike from '../assets/images/dislike.svg';
 
 function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
   const [dragStartX, setDragStartX] = useState(0);
   const [dragOffsetX, setDragOffsetX] = useState(0); // Track the drag offset
   const [dragging, setDragging] = useState(false);
+  const [swipeAnimation, setSwipeAnimation] = useState(null); // Animation state
   const [slides, setSlides] = useState([]); // Store randomized slides
   const carouselRef = useRef(null);
   const threshold = 100; // Minimum swipe distance to trigger slide change
@@ -80,7 +82,7 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     stanley, plant, chico, meduse, paris, mardi, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, fitness,
-    cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, orange, guy, cone, 
+    cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, orange, guy, cone,
   ];
 
   // Function to shuffle an array
@@ -114,14 +116,21 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     setDragging(false);
     if (Math.abs(dragOffsetX) > threshold) {
       if (dragOffsetX < 0) {
-        // Swipe left -> next slide
+        // Swipe left -> dislike animation
+        triggerAnimation('dislike');
         handleSelect((activeIndex + 1) % slides.length);
       } else {
-        // Swipe right -> previous slide
+        // Swipe right -> like animation
+        triggerAnimation('like');
         handleSelect((activeIndex - 1 + slides.length) % slides.length);
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
+  };
+
+  const triggerAnimation = (type) => {
+    setSwipeAnimation(type);
+    setTimeout(() => setSwipeAnimation(null), 600); // Remove animation after 600ms
   };
 
   const handleSelect = (selectedIndex) => {
@@ -165,6 +174,19 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
           </div>
         ))}
       </div>
+      {swipeAnimation && (
+        <div
+          className={`swipe-animation ${
+            swipeAnimation === 'like' ? 'like-animation' : 'dislike-animation'
+          }`}
+        >
+          <img
+            src={swipeAnimation === 'like' ? like : dislike}
+            alt={swipeAnimation}
+            className="swipe-img"
+          />
+        </div>
+      )}
     </div>
   );
 }
