@@ -10,7 +10,6 @@ import hotdog from '../assets/images/hotdog.png';
 import legs from '../assets/images/legs2.png';
 import cig from '../assets/images/longlongcig.png';
 import manipuladora from '../assets/images/manipuladora.png';
-import mardi from '../assets/images/mardi.png';
 import mop from '../assets/images/mop.png';
 import meduse from '../assets/images/meduse.png';
 import megot from '../assets/images/megot.png';
@@ -94,11 +93,12 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
   const imageArray = [
     gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog, legs,
     petitpois, soap, cig, mop, manipuladora, rock, sun, max, vrac, woman, playboy,
-    stanley, plant, chico, meduse, paris, mardi, soup, shoes, signal,
+    stanley, plant, chico, meduse, paris, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, fitness,
     cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, 
-    orange, guy, cone, aceite, cables, carrots, chairs, day, fraise, papier, lime, oranges, orb, salsa, seau, stone, tpe, 
+    orange, guy, cone, aceite, cables, carrots, chairs, day, fraise, papier, lime, oranges, 
+    orb, salsa, seau, stone, tpe, 
   ];
 
   // Function to shuffle an array
