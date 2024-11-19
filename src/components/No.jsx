@@ -1,5 +1,5 @@
 import React from 'react';
-import noIcon from '../assets/images/no.svg';
+import noIcon from '../assets/images/crossb.png';
 
 
 const NoButton = ({ handleNext }) => {

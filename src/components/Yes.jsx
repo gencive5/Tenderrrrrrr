@@ -1,5 +1,5 @@
 import React from 'react';
-import yesIcon from '../assets/images/yes.svg';
+import yesIcon from '../assets/images/coeur.png';
 
 const YesButton = ({ handleNext }) => {
   return (

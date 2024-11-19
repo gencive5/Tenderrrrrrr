@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Carousel from './components/FirstCarousel.jsx';
-import logo from './assets/images/logo.svg';
+import logo from './assets/images/heart3D8.png';
 import { Gradient } from './components/Gradient.js';
 import YesButton from './components/Yes.jsx'; 
 import NoButton from './components/No.jsx'; 
