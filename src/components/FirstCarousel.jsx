@@ -80,7 +80,7 @@ import girl from '../assets/images/girl.png';
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
 
-function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
+function TinderLikeCarousel() {
   const [dragStartX, setDragStartX] = useState(0);
   const [dragOffsetX, setDragOffsetX] = useState(0); // Track the drag offset
   const [dragging, setDragging] = useState(false);
@@ -134,14 +134,18 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
       if (dragOffsetX < 0) {
         // Swipe left -> dislike animation
         triggerAnimation('dislike');
-        handleSelect((activeIndex + 1) % slides.length);
+        handleSwipe();
       } else {
         // Swipe right -> like animation
         triggerAnimation('like');
-        handleSelect((activeIndex - 1 + slides.length) % slides.length);
+        handleSwipe();
       }
     }
     setDragOffsetX(0); // Reset drag offset after swipe ends
+  };
+
+  const handleSwipe = () => {
+    setSlides((prevSlides) => prevSlides.slice(1)); // Remove the first slide
   };
 
   const triggerAnimation = (type) => {
@@ -149,17 +153,13 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
     setTimeout(() => setSwipeAnimation(null), 600); // Remove animation after 600ms
   };
 
-  const handleSelect = (selectedIndex) => {
-    setActiveIndex(selectedIndex);
-  };
-
   const getTransformStyle = (index) => {
-    if (dragging && activeIndex === index) {
+    if (dragging && index === 0) {
       return {
         transform: `translateX(${dragOffsetX}px)`,
         transition: 'none', // Disable transition while dragging
       };
-    } else if (activeIndex === index) {
+    } else if (index === 0) {
       return {
         transform: 'translateX(0)',
         transition: 'transform 0.6s ease', // Smooth transition back to normal
