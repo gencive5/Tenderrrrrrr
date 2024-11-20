@@ -7,7 +7,6 @@ import framboise from '../assets/images/framboise.png';
 import hair from '../assets/images/hair.png';
 import handi from '../assets/images/handi.png';
 import hotdog from '../assets/images/hotdog.png';
-import legs from '../assets/images/legs2.png';
 import cig from '../assets/images/longlongcig.png';
 import manipuladora from '../assets/images/manipuladora.png';
 import mop from '../assets/images/mop.png';
@@ -91,7 +90,7 @@ function TinderLikeCarousel() {
 
   // List of all images
   const imageArray = [
-    gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog, legs,
+    gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog, 
     petitpois, soap, cig, mop, manipuladora, sun, max, vrac, woman, playboy,
     stanley, plant, chico, meduse, paris, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
