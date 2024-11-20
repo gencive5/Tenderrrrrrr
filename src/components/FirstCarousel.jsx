@@ -18,7 +18,6 @@ import petitpois from '../assets/images/petitpois.png';
 import plant from '../assets/images/plant.png';
 import chico from '../assets/images/chico.png';
 import playboy from '../assets/images/playboy.png';
-import rock from '../assets/images/rocktoppings.png';
 import soap from '../assets/images/soap.png';
 import stanley from '../assets/images/stanley.png';
 import max from '../assets/images/stanleymax.png';
@@ -76,6 +75,7 @@ import salsa from '../assets/images/salsa.png';
 import seau from '../assets/images/seau.png';
 import stone from '../assets/images/stone.png';
 import tpe from '../assets/images/tpe.png';
+import girl from '../assets/images/girl.png';
 
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
@@ -92,13 +92,13 @@ function TinderLikeCarousel({ activeIndex, setActiveIndex }) {
   // List of all images
   const imageArray = [
     gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog, legs,
-    petitpois, soap, cig, mop, manipuladora, rock, sun, max, vrac, woman, playboy,
+    petitpois, soap, cig, mop, manipuladora, sun, max, vrac, woman, playboy,
     stanley, plant, chico, meduse, paris, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, fitness,
     cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, 
     orange, guy, cone, aceite, cables, carrots, chairs, day, fraise, papier, lime, oranges, 
-    orb, salsa, seau, stone, tpe, 
+    orb, salsa, seau, stone, tpe, girl, 
   ];
 
   // Function to shuffle an array
