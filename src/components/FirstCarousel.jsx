@@ -1,80 +1,75 @@
 import React, { useState, useRef, useEffect } from 'react';
 // Images
-import couple from '../assets/images/couple.png';
-import flower from '../assets/images/flower.png';
-import fragile from '../assets/images/fragile.png';
-import framboise from '../assets/images/framboise.png';
-import hair from '../assets/images/hair.png';
-import handi from '../assets/images/handi.png';
-import hotdog from '../assets/images/hotdog.png';
-import cig from '../assets/images/longlongcig.png';
-import manipuladora from '../assets/images/manipuladora.png';
-import mop from '../assets/images/mop.png';
-import meduse from '../assets/images/meduse.png';
-import megot from '../assets/images/megot.png';
-import paris from '../assets/images/paris.png';
-import petitpois from '../assets/images/petitpois.png';
-import plant from '../assets/images/plant.png';
-import chico from '../assets/images/chico.png';
-import playboy from '../assets/images/playboy.png';
-import soap from '../assets/images/soap.png';
-import stanley from '../assets/images/stanley.png';
-import max from '../assets/images/stanleymax.png';
-import sun from '../assets/images/sun.png';
-import vrac from '../assets/images/vrac.png';
-import woman from '../assets/images/woman.png';
-import gel from '../assets/images/gel.png';
-import soup from '../assets/images/soup.png';
-import shoes from '../assets/images/shoes.png';
-import signal from '../assets/images/signal.png';
-import rip from '../assets/images/rip.png';
-import local from '../assets/images/local.png';
-import chair from '../assets/images/chair.png';
-import faim from '../assets/images/faim.png';
-import tube from '../assets/images/tube.png';
-import sunset from '../assets/images/sunset.png';
-import spider from '../assets/images/spider.png';
-import savon from '../assets/images/savon.png';
-import purple from '../assets/images/purple.png';
-import melon from '../assets/images/melon.png';
-import green from '../assets/images/green.png';
-import chaise from '../assets/images/chaise.png';
-import car from '../assets/images/car.png';
-import amethyst from '../assets/images/amethyst.png';
-import treize from '../assets/images/treize.png';
-import relax from '../assets/images/relax.png';
-import doliprane from '../assets/images/doliprane.png';
-import cookie from '../assets/images/cookie.png';
-import fitness from '../assets/images/fitness.png';
-import cats from '../assets/images/cats.png';
-import alien from '../assets/images/alien.png';
-import eolienne from '../assets/images/eolienne.png';
-import ex from '../assets/images/ex.png';
-import ghost from '../assets/images/ghost.png';
-import mommy from '../assets/images/mommy2.png';
-import normal from '../assets/images/normal.png';
-import pal from '../assets/images/pal.png';
-import tomatos from '../assets/images/tomatos.png';
-import tortilla from '../assets/images/tortilla.png';
-import wolves from '../assets/images/wolves.png';
-import orange from '../assets/images/orange.png';
-import guy from '../assets/images/guy2.png';
-import cone from '../assets/images/cone.png';
-import aceite from '../assets/images/aceite.png';
-import cables from '../assets/images/cables.png';
-import carrots from '../assets/images/carrots.png';
-import chairs from '../assets/images/chairs.png';
-import day from '../assets/images/day.png';
-import fraise from '../assets/images/fraise.png';
-import papier from '../assets/images/papier.png';
-import lime from '../assets/images/lime.png';
-import oranges from '../assets/images/oranges.png';
-import orb from '../assets/images/orb.png';
-import salsa from '../assets/images/salsa.png';
-import seau from '../assets/images/seau.png';
-import stone from '../assets/images/stone.png';
-import tpe from '../assets/images/tpe.png';
-import girl from '../assets/images/girl.png';
+import couple from '../assets/images/couple.webp';
+import flower from '../assets/images/flower.webp';
+import fragile from '../assets/images/fragile.webp';
+import framboise from '../assets/images/framboise.webp';
+import hair from '../assets/images/hair.webp';
+import handi from '../assets/images/handi.webp';
+import hotdog from '../assets/images/hotdog.webp';
+import cig from '../assets/images/longlongcig.webp';
+import manipuladora from '../assets/images/manipuladora.webp';
+import mop from '../assets/images/mop.webp';
+import megot from '../assets/images/megot.webp';
+import paris from '../assets/images/paris.webp';
+import petitpois from '../assets/images/petitpois.webp';
+import plant from '../assets/images/plant.webp';
+import chico from '../assets/images/chico.webp';
+import playboy from '../assets/images/playboy.webp';
+import soap from '../assets/images/soap.webp';
+import max from '../assets/images/stanleymax.webp';
+import sun from '../assets/images/sun.webp';
+import woman from '../assets/images/woman.webp';
+import gel from '../assets/images/gel.webp';
+import soup from '../assets/images/soup.webp';
+import shoes from '../assets/images/shoes.webp';
+import signal from '../assets/images/signal.webp';
+import rip from '../assets/images/rip.webp';
+import local from '../assets/images/local.webp';
+import chair from '../assets/images/chair.webp';
+import faim from '../assets/images/faim.webp';
+import tube from '../assets/images/tube.webp';
+import sunset from '../assets/images/sunset.webp';
+import spider from '../assets/images/spider.webp';
+import savon from '../assets/images/savon.webp';
+import purple from '../assets/images/purple.webp';
+import melon from '../assets/images/melon.webp';
+import green from '../assets/images/green.webp';
+import chaise from '../assets/images/chaise.webp';
+import car from '../assets/images/car.webp';
+import amethyst from '../assets/images/amethyst.webp';
+import treize from '../assets/images/treize.webp';
+import relax from '../assets/images/relax.webp';
+import doliprane from '../assets/images/doliprane.webp';
+import cookie from '../assets/images/cookie.webp';
+import cats from '../assets/images/cats.webp';
+import eolienne from '../assets/images/eolienne.webp';
+import ex from '../assets/images/ex.webp';
+import ghost from '../assets/images/ghost.webp';
+import mommy from '../assets/images/mommy.webp';
+import normal from '../assets/images/normal.webp';
+import pal from '../assets/images/pal.webp';
+import tomatos from '../assets/images/tomatos.webp';
+import tortilla from '../assets/images/tortilla.webp';
+import wolves from '../assets/images/wolves.webp';
+import orange from '../assets/images/orange.webp';
+import guy from '../assets/images/guy2.webp';
+import cone from '../assets/images/cone.webp';
+import aceite from '../assets/images/aceite.webp';
+import cables from '../assets/images/cables.webp';
+import carrots from '../assets/images/carrots.webp';
+import chairs from '../assets/images/chairs.webp';
+import fraise from '../assets/images/fraise.webp';
+import papier from '../assets/images/papier.webp';
+import lime from '../assets/images/lime.webp';
+import oranges from '../assets/images/oranges.webp';
+import orb from '../assets/images/orb.webp';
+import salsa from '../assets/images/salsa.webp';
+import seau from '../assets/images/seau.webp';
+import stone from '../assets/images/stone.webp';
+import tpe from '../assets/images/tpe.webp';
+import girl from '../assets/images/girl.webp';
+import stanley from '../assets/images/stanleymax.webp';
 
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
@@ -91,12 +86,12 @@ function TinderLikeCarousel() {
   // List of all images
   const imageArray = [
     gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog, 
-    petitpois, soap, cig, mop, manipuladora, sun, max, vrac, woman, playboy,
-    stanley, plant, chico, meduse, paris, soup, shoes, signal,
+    petitpois, soap, cig, mop, manipuladora, sun, max, woman, playboy,
+    stanley, plant, chico, paris, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
-    green, chaise, car, amethyst, treize, relax, doliprane, cookie, fitness,
-    cats, alien, eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, 
-    orange, guy, cone, aceite, cables, carrots, chairs, day, fraise, papier, lime, oranges, 
+    green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats, 
+    eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, 
+    orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges, 
     orb, salsa, seau, stone, tpe, girl, 
   ];
 
