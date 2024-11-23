@@ -70,6 +70,24 @@ import stone from '../assets/images/stone.webp';
 import tpe from '../assets/images/tpe.webp';
 import girl from '../assets/images/girl.webp';
 import stanley from '../assets/images/stanleymax.webp';
+import brain from '../assets/images/brain.webp';
+import danette from '../assets/images/danette.webp';
+import diesel from '../assets/images/diesel.webp';
+import fall from '../assets/images/fall.webp';
+import girlstop from '../assets/images/girlstop.webp';
+import ice from '../assets/images/ice.webp';
+import jellyblue from '../assets/images/jellyblue.webp';
+import jellypink from '../assets/images/jellypink.webp';
+import lavablue from '../assets/images/lavablue.webp';
+import leopard from '../assets/images/leopard.webp';
+import lush from '../assets/images/lush.webp';
+import pearls from '../assets/images/pearls.webp';
+import pole from '../assets/images/pole.webp';
+import rolex from '../assets/images/rolex.webp';
+import spray from '../assets/images/spray.webp';
+import tin from '../assets/images/tin.webp';
+import trays from '../assets/images/trays.webp';
+
 
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
@@ -92,7 +110,8 @@ function TinderLikeCarousel() {
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats, 
     eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, 
     orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges, 
-    orb, salsa, seau, stone, tpe, girl, 
+    orb, salsa, seau, stone, tpe, girl, brain, danette, diesel, girlstop, fall, ice, 
+    jellyblue, jellypink, lavablue, leopard, lush, pearls, pole, rolex, tin, spray, trays, 
   ];
 
   // Function to shuffle an array
