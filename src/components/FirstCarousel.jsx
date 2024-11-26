@@ -87,7 +87,12 @@ import rolex from '../assets/images/rolex.webp';
 import spray from '../assets/images/spray.webp';
 import tin from '../assets/images/tin.webp';
 import trays from '../assets/images/trays.webp';
-
+import truck from '../assets/images/truckcoquette.webp';
+import tapis from '../assets/images/tapis.webp';
+import pantoufles from '../assets/images/pantoufles.webp';
+import kim from '../assets/images/kim.webp';
+import lundi from '../assets/images/lundi.webp';
+import crakeo from '../assets/images/crakeo.webp';
 
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
@@ -112,6 +117,7 @@ function TinderLikeCarousel() {
     orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges, 
     orb, salsa, seau, stone, tpe, girl, brain, danette, diesel, girlstop, fall, ice, 
     jellyblue, jellypink, lavablue, leopard, lush, pearls, pole, rolex, tin, spray, trays, 
+    truck, tapis, pantoufles, crakeo, lundi, kim, 
   ];
 
   // Function to shuffle an array
