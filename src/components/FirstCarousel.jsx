@@ -99,28 +99,26 @@ import dislike from '../assets/images/dislike.svg';
 
 function TinderLikeCarousel() {
   const [dragStartX, setDragStartX] = useState(0);
-  const [dragOffsetX, setDragOffsetX] = useState(0); // Track the drag offset
+  const [dragOffsetX, setDragOffsetX] = useState(0);
   const [dragging, setDragging] = useState(false);
-  const [swipeAnimation, setSwipeAnimation] = useState(null); // Animation state
-  const [slides, setSlides] = useState([]); // Store randomized slides
+  const [swipeAnimation, setSwipeAnimation] = useState(null);
+  const [slides, setSlides] = useState([]);
   const carouselRef = useRef(null);
-  const threshold = 100; // Minimum swipe distance to trigger slide change
+  const threshold = 100;
 
-  // List of all images
   const imageArray = [
-    gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog, 
+    gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog,
     petitpois, soap, cig, mop, manipuladora, sun, max, woman, playboy,
     stanley, plant, chico, paris, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
-    green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats, 
-    eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves, 
-    orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges, 
-    orb, salsa, seau, stone, tpe, girl, brain, danette, diesel, girlstop, fall, ice, 
-    jellyblue, jellypink, lavablue, leopard, lush, pearls, pole, rolex, tin, spray, trays, 
-    truck, tapis, pantoufles, crakeo, lundi, kim, 
+    green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats,
+    eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
+    orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges,
+    orb, salsa, seau, stone, tpe, girl, brain, danette, diesel, girlstop, fall, ice,
+    jellyblue, jellypink, lavablue, leopard, lush, pearls, pole, rolex, tin, spray, trays,
+    truck, tapis, pantoufles, crakeo, lundi, kim,
   ];
 
-  // Function to shuffle an array
   function shuffleArray(array) {
     const shuffled = [...array];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -130,70 +128,65 @@ function TinderLikeCarousel() {
     return shuffled;
   }
 
-  // Shuffle slides on initial render
   useEffect(() => {
     setSlides(shuffleArray(imageArray));
   }, []);
 
   const handleTouchStart = (e) => {
     setDragging(true);
-    setDragStartX(e.touches[0].clientX); // Record the initial touch position
+    setDragStartX(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
     if (dragging) {
       const currentX = e.touches[0].clientX;
-      setDragOffsetX(currentX - dragStartX); // Calculate the drag distance
+      setDragOffsetX(currentX - dragStartX);
     }
   };
 
   const handleTouchEnd = () => {
     setDragging(false);
     if (Math.abs(dragOffsetX) > threshold) {
-      if (dragOffsetX < 0) {
-        // Swipe left -> dislike animation
-        triggerAnimation('dislike');
-        handleSwipe();
-      } else {
-        // Swipe right -> like animation
-        triggerAnimation('like');
-        handleSwipe();
-      }
+      triggerAnimation(dragOffsetX < 0 ? 'dislike' : 'like');
+      setSlides((prevSlides) => prevSlides.slice(1));
     }
-    setDragOffsetX(0); // Reset drag offset after swipe ends
-  };
-
-  const handleSwipe = () => {
-    setSlides((prevSlides) => prevSlides.slice(1)); // Remove the first slide
+    setDragOffsetX(0);
   };
 
   const triggerAnimation = (type) => {
     setSwipeAnimation(type);
-    setTimeout(() => setSwipeAnimation(null), 600); // Remove animation after 600ms
+    setTimeout(() => setSwipeAnimation(null), 600);
   };
 
   const getTransformStyle = (index) => {
     if (dragging && index === 0) {
-      return {
-        transform: `translateX(${dragOffsetX}px)`,
-        transition: 'none', // Disable transition while dragging
-      };
+      return { transform: `translateX(${dragOffsetX}px)`, transition: 'none' };
     } else if (index === 0) {
-      return {
-        transform: 'translateX(0)',
-        transition: 'transform 0.6s ease', // Smooth transition back to normal
-      };
+      return { transform: 'translateX(0)', transition: 'transform 0.6s ease' };
     }
-    return {
-      transform: 'translateX(100%)', // Keep non-active slides off-screen
-      transition: 'none', // No transition for non-active slides
-    };
+    return { transform: 'translateX(100%)', transition: 'none' };
   };
 
   return (
-    <div className="carousel-container">
+    <div className="carousel-wrapper">
+      {/* Swipe animation placed outside of the carousel */}
+      {swipeAnimation && (
+        <div
+          className={`swipe-animation ${
+            swipeAnimation === 'like' ? 'like-animation' : 'dislike-animation'
+          }`}
+        >
+          <img
+            src={swipeAnimation === 'like' ? like : dislike}
+            alt={swipeAnimation}
+            className="swipe-img"
+          />
+        </div>
+      )}
+
+      {/* Carousel */}
       <div
-        className="carousel"
+        className="carousel-container"
         ref={carouselRef}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -209,19 +202,6 @@ function TinderLikeCarousel() {
           </div>
         ))}
       </div>
-      {swipeAnimation && (
-        <div
-          className={`swipe-animation ${
-            swipeAnimation === 'like' ? 'like-animation' : 'dislike-animation'
-          }`}
-        >
-          <img
-            src={swipeAnimation === 'like' ? like : dislike}
-            alt={swipeAnimation}
-            className="swipe-img"
-          />
-        </div>
-      )}
     </div>
   );
 }
