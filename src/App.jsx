@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Carousel from './components/FirstCarousel.jsx';
@@ -8,16 +8,19 @@ import YesButton from './components/Yes.jsx';
 import NoButton from './components/No.jsx'; 
 
 function App() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const canvasRef = useRef(null);
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     const gradient = new Gradient();
     gradient.initGradient('#gradient-canvas');
   }, []);
 
-  const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % 4);
+  // Trigger the carousel slide change via a button click
+  const triggerNextSlide = (type) => {
+    if (carouselRef.current) {
+      carouselRef.current.triggerButtonAction(type);
+    }
   };
 
   return (
@@ -28,11 +31,11 @@ function App() {
           <img src={logo} alt="Logo" className="logo" />
         </div>
         <div className="carousel-container">
-          <Carousel activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
+          <Carousel ref={carouselRef} />
         </div>
         <div className="button-container">
-          <YesButton handleNext={handleNext} />
-          <NoButton handleNext={handleNext} />
+          <YesButton handleNext={() => triggerNextSlide('like')} />
+          <NoButton handleNext={() => triggerNextSlide('dislike')} />
         </div>
       </div>
     </div>

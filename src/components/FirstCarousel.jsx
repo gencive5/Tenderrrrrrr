@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+
+
 // Images
 import couple from '../assets/images/couple.webp';
 import flower from '../assets/images/flower.webp';
@@ -97,13 +99,12 @@ import crakeo from '../assets/images/crakeo.webp';
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
 
-function TinderLikeCarousel() {
+const TinderLikeCarousel = forwardRef((props, ref) => {
   const [dragStartX, setDragStartX] = useState(0);
   const [dragOffsetX, setDragOffsetX] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [swipeAnimation, setSwipeAnimation] = useState(null);
   const [slides, setSlides] = useState([]);
-  const carouselRef = useRef(null);
   const threshold = 100;
 
   const imageArray = [
@@ -148,7 +149,7 @@ function TinderLikeCarousel() {
     setDragging(false);
     if (Math.abs(dragOffsetX) > threshold) {
       triggerAnimation(dragOffsetX < 0 ? 'dislike' : 'like');
-      setSlides((prevSlides) => prevSlides.slice(1));
+      handleNextSlide();
     }
     setDragOffsetX(0);
   };
@@ -157,6 +158,20 @@ function TinderLikeCarousel() {
     setSwipeAnimation(type);
     setTimeout(() => setSwipeAnimation(null), 600);
   };
+
+  const handleNextSlide = () => {
+    setSlides((prevSlides) => prevSlides.slice(1));
+  };
+
+  const triggerButtonAction = (type) => {
+    triggerAnimation(type);
+    handleNextSlide();
+  };
+
+  // Expose `triggerButtonAction` to the parent via ref
+  useImperativeHandle(ref, () => ({
+    triggerButtonAction,
+  }));
 
   const getTransformStyle = (index) => {
     if (dragging && index === 0) {
@@ -169,7 +184,7 @@ function TinderLikeCarousel() {
 
   return (
     <div className="carousel-wrapper">
-      {/* Swipe animation placed outside of the carousel */}
+      {/* Swipe animation */}
       {swipeAnimation && (
         <div
           className={`swipe-animation ${
@@ -187,7 +202,6 @@ function TinderLikeCarousel() {
       {/* Carousel */}
       <div
         className="carousel-container"
-        ref={carouselRef}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -204,6 +218,6 @@ function TinderLikeCarousel() {
       </div>
     </div>
   );
-}
+});
 
 export default TinderLikeCarousel;
