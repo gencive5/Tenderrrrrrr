@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Carousel from './components/FirstCarousel.jsx';
-import logo from './assets/images/heart3D8.png';
+import logo from './assets/images/logooutline.svg';
 import { Gradient } from './components/Gradient.js';
 import YesButton from './components/Yes.jsx'; 
 import NoButton from './components/No.jsx'; 
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="fullscreen-container">
-      <canvas id="gradient-canvas" ref={canvasRef}></canvas>
+     {/*<canvas id="gradient-canvas" ref={canvasRef}></canvas> */}
       <div className="main-zone">
         <div className="logo-container">
           <img src={logo} alt="Logo" className="logo" />
