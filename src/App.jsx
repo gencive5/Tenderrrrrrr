@@ -7,6 +7,8 @@ import { Gradient } from './components/Gradient.js';
 import YesButton from './components/Yes.jsx'; 
 import NoButton from './components/No.jsx'; 
 
+
+
 function App() {
   const canvasRef = useRef(null);
   const carouselRef = useRef(null);
@@ -22,6 +24,8 @@ function App() {
       carouselRef.current.triggerButtonAction(type);
     }
   };
+
+ 
 
   return (
     <div className="fullscreen-container">

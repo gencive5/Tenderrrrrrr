@@ -99,6 +99,9 @@ import crakeo from '../assets/images/crakeo.webp';
 import like from '../assets/images/like.svg';
 import dislike from '../assets/images/dislike.svg';
 
+import tick from '../assets/images/tick.svg';
+import cross from '../assets/images/crossthin.svg';
+
 const TinderLikeCarousel = forwardRef((props, ref) => {
   const [dragStartX, setDragStartX] = useState(0);
   const [dragOffsetX, setDragOffsetX] = useState(0);
@@ -193,6 +196,21 @@ const TinderLikeCarousel = forwardRef((props, ref) => {
         >
           <img
             src={swipeAnimation === 'like' ? like : dislike}
+            alt={swipeAnimation}
+            className="swipe-img"
+          />
+        </div>
+      )}
+
+
+{swipeAnimation && (
+        <div
+          className={`swipe-animation2 ${
+            swipeAnimation === 'like' ? 'like-animation' : 'dislike-animation'
+          }`}
+        >
+          <img
+            src={swipeAnimation === 'like' ? tick : cross}
             alt={swipeAnimation}
             className="swipe-img"
           />
