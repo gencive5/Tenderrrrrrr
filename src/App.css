@@ -175,10 +175,10 @@ body, html {
   font-size: 1rem;
   cursor: pointer;
   border: none;
-  transition: background-color 0.3s ease;
   background-color: transparent;
-  padding: 10px;  
+  padding: 10px;
   margin-right: 2rem;
+  transition: background-color 0.3s ease;
 }
 
 .yes-button:hover {
@@ -186,37 +186,54 @@ body, html {
 }
 
 .yes-icon {
-  width: 40px; 
-  height: 40px; 
+  width: 40px;
+  height: 40px;
+  transition: fill 0.3s ease;
 }
 
+.yes-path {
+  fill: none; /* No fill by default */
+  stroke: #000; /* Black outline initially */
+  stroke-width: 2px; /* Adjust stroke thickness if needed */
+  transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+.yes-icon.clicked .yes-path {
+  fill: #ed302f; /* Fill color when clicked */
+  stroke: none; /* Remove outline when filled */
+}
+
+
 .no-button {
- 
   font-size: 1rem;
   cursor: pointer;
-  background-color: #aa0e0e;
-  color: white;
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
+  padding: 10px;
+  margin-left: 2rem;
   transition: background-color 0.3s ease;
+}
+
+.no-button:hover {
+  background-color: transparent;
 }
 
 .no-icon {
   width: 40px;
   height: 40px;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
-.no-button {
-  background-color: transparent;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  margin-left: 2rem;
+.no-path {
+  fill: none; /* No fill by default */
+  stroke: #cc0202; /* Red outline initially */
+  stroke-width: 4px;
+  transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
-
-.no-button:hover {
-  background-color: transparent; 
+.no-icon.clicked .no-path {
+  fill: #cc0202; /* Fill with red when clicked */
+  stroke: none; /* Remove the outline when filled */
 }
 
 
