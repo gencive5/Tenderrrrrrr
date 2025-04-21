@@ -29,7 +29,8 @@ function App() {
 
   return (
     <div className="fullscreen-container">
-     {/*<canvas id="gradient-canvas" ref={canvasRef}></canvas> */}
+     <canvas id="gradient-canvas" ref={canvasRef}></canvas>
+     <canvas id="gradient-canvas" className="lego" ref={canvasRef}></canvas>
       <div className="main-zone">
         <div className="logo-container">
           <img src={logo} alt="Logo" className="logo" />
