@@ -312,7 +312,7 @@ function normalizeColor(hexCode) {
   //Gradient object
   class Gradient {
     constructor(...t) {
-        e(this, "el", void 0), e(this, "cssVarRetries", 0), e(this, "maxCssVarRetries", 200), e(this, "angle", 0), e(this, "isLoadedClass", !1), e(this, "isScrolling", !1), /*e(this, "isStatic", o.disableAmbientAnimations()),*/ e(this, "scrollingTimeout", void 0), e(this, "scrollingRefreshDelay", 200), e(this, "isIntersecting", !1), e(this, "shaderFiles", void 0), e(this, "vertexShader", void 0), e(this, "sectionColors", void 0), e(this, "computedCanvasStyle", void 0), e(this, "conf", void 0), e(this, "uniforms", void 0), e(this, "t", 1253106), e(this, "last", 0), e(this, "width", void 0), e(this, "minWidth", 1111), e(this, "height", 600), e(this, "xSegCount", void 0), e(this, "ySegCount", void 0), e(this, "mesh", void 0), e(this, "material", void 0), e(this, "geometry", void 0), e(this, "minigl", void 0), e(this, "scrollObserver", void 0), e(this, "amp", 320), e(this, "seed", 5), e(this, "freqX", 14e-5), e(this, "freqY", 29e-5), e(this, "freqDelta", 1e-5), e(this, "activeColors", [1, 1, 1, 1]), e(this, "isMetaKey", !1), e(this, "isGradientLegendVisible", !1), e(this, "isMouseDown", !1), e(this, "handleScroll", () => {
+        e(this, "el", void 0), e(this, "cssVarRetries", 0), e(this, "maxCssVarRetries", 200), e(this, "angle", 0), e(this, "isLoadedClass", !1), e(this, "isScrolling", !1), /*e(this, "isStatic", o.disableAmbientAnimations()),*/ e(this, "scrollingTimeout", void 0), e(this, "scrollingRefreshDelay", 200), e(this, "isIntersecting", !1), e(this, "shaderFiles", void 0), e(this, "vertexShader", void 0), e(this, "sectionColors", void 0), e(this, "computedCanvasStyle", void 0), e(this, "conf", void 0), e(this, "uniforms", void 0), e(this, "t", 1253106), e(this, "last", 0), e(this, "width", void 0), e(this, "minWidth", 1111), e(this, "height", 600), e(this, "xSegCount", void 0), e(this, "ySegCount", void 0), e(this, "mesh", void 0), e(this, "material", void 0), e(this, "geometry", void 0), e(this, "minigl", void 0), e(this, "scrollObserver", void 0), e(this, "amp", 120), e(this, "seed", 2), e(this, "freqX", 84e-5), e(this, "freqY", 69e-5), e(this, "freqDelta", 1e-5), e(this, "activeColors", [1, 1, 1, 1]), e(this, "isMetaKey", !1), e(this, "isGradientLegendVisible", !1), e(this, "isMouseDown", !1), e(this, "handleScroll", () => {
             clearTimeout(this.scrollingTimeout), this.scrollingTimeout = setTimeout(this.handleScrollEnd, this.scrollingRefreshDelay), this.isGradientLegendVisible && this.hideGradientLegend(), this.conf.playing && (this.isScrolling = !0, this.pause())
         }), e(this, "handleScrollEnd", () => {
             this.isScrolling = !1, this.isIntersecting && this.play()
@@ -389,7 +389,7 @@ function normalizeColor(hexCode) {
                 value: 0
             }),
             u_shadow_power: new this.minigl.Uniform({
-                value: 5
+                value: 2
             }),
             u_darken_top: new this.minigl.Uniform({
                 value: "" === this.el.dataset.jsDarkenTop ? 1 : 0
@@ -422,14 +422,14 @@ function normalizeColor(hexCode) {
                         value: -.5
                     }),
                     noiseFreq: new this.minigl.Uniform({
-                        value: [3, 4],
+                        value: [8, 4],
                         type: "vec2"
                     }),
                     noiseAmp: new this.minigl.Uniform({
                         value: this.amp
                     }),
                     noiseSpeed: new this.minigl.Uniform({
-                        value: 10
+                        value: 1
                     }),
                     noiseFlow: new this.minigl.Uniform({
                         value: 3
@@ -463,16 +463,16 @@ function normalizeColor(hexCode) {
                     type: "vec2"
                 }),
                 noiseSpeed: new this.minigl.Uniform({
-                    value: 11 + .3 * e
+                    value: 1 + .9 * e
                 }),
                 noiseFlow: new this.minigl.Uniform({
-                    value: 6.5 + .3 * e
+                    value: 2.5 + .3 * e
                 }),
                 noiseSeed: new this.minigl.Uniform({
                     value: this.seed + 10 * e
                 }),
                 noiseFloor: new this.minigl.Uniform({
-                    value: .1
+                    value: .3
                 }),
                 noiseCeil: new this.minigl.Uniform({
                     value: .63 + .07 * e
