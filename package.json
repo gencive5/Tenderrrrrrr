@@ -21,6 +21,7 @@
     "react-curtains": "^1.0.10",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.14.2",
+    "three": "^0.184.0",
     "whatamesh": "^0.2.0"
   },
   "devDependencies": {
