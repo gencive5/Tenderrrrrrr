@@ -41,8 +41,8 @@ function App() {
               speed: 0.3,
               volatility: 0.15,
               mouseMovementMultiplier: 0.005,
-              opacity: 0.4, // Subtle to let gradient shine through
-              colorTint: "#591117", // Matches your gradient-color-1
+              opacity: 0.9, 
+              
               zIndex: 0
             },
             {
@@ -50,8 +50,7 @@ function App() {
               speed: 0.6,
               volatility: 0.25,
               mouseMovementMultiplier: 0.015,
-              opacity: 0.5,
-              colorTint: "#8C2A32", // Matches your gradient-color-2
+              opacity: 0.9,
               zIndex: 1
             },
             {
@@ -59,8 +58,7 @@ function App() {
               speed: 1.0,
               volatility: 0.35,
               mouseMovementMultiplier: 0.03,
-              opacity: 0.6,
-              colorTint: "#D9ADAD", // Matches your gradient-color-3
+              opacity: 0.9,
               zIndex: 2
             }
           ]}

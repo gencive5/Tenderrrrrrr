@@ -463,13 +463,13 @@ function normalizeColor(hexCode) {
                     value: 1 + .9 * e
                 }),
                 noiseFlow: new this.minigl.Uniform({
-                    value: 2.5 + .3 * e
+                    value: 3.5 + .3 * e
                 }),
                 noiseSeed: new this.minigl.Uniform({
                     value: this.seed + 10 * e
                 }),
                 noiseFloor: new this.minigl.Uniform({
-                    value: .3
+                    value: .5
                 }),
                 noiseCeil: new this.minigl.Uniform({
                     value: .63 + .07 * e

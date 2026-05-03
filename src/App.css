@@ -160,10 +160,10 @@ body, html {
 #gradient-canvas {
   width: 100%;
   height: 100%;
-  --gradient-color-1: #591117; 
+  --gradient-color-1: #8C1C1C; 
   --gradient-color-2: #8C2A32; 
   --gradient-color-3: #D9ADAD;  
-  --gradient-color-4: #8C1C1C;
+  --gradient-color-4: #D94E8F;
   
   position: absolute; 
   top: 0;
