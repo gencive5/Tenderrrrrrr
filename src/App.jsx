@@ -6,20 +6,16 @@ import logo from './assets/images/logooutline.svg';
 import YesButton from './components/Yes.jsx'; 
 import NoButton from './components/No.jsx'; 
 import LayeredDistortion from './components/LayeredDistortion';
-import { Gradient } from './components/Gradient.js';
+// import SimpleAnimatedGradient from './components/SimpleAnimatedGradient';
+// import { Gradient } from './components/Gradient.js';
 // Import your PNG layers - create these in your assets/images/
 import layer1 from './assets/layer-pink.png';
 import layer2 from './assets/layer-red.png';
 import layer3 from './assets/layer-purple.png';
 
 function App() {
-  const canvasRef = useRef(null);
   const carouselRef = useRef(null);
 
-  useEffect(() => {
-    const gradient = new Gradient();
-    gradient.initGradient('#gradient-canvas');
-  }, []);
 
   const triggerNextSlide = (type) => {
     if (carouselRef.current) {
@@ -29,10 +25,10 @@ function App() {
 
   return (
     <div className="fullscreen-container">
-      {/* Background Gradient - stays at bottom */}
-      <canvas id="gradient-canvas" ref={canvasRef}></canvas>
+     
+      {/* <SimpleAnimatedGradient/> */}
       
-      {/* Distortion Layers - between gradient and content */}
+      {/* Distortion Layers */}
       <div className="distortion-container">
         <LayeredDistortion 
           layers={[
