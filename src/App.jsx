@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Carousel from './components/FirstCarousel.jsx';
+import Carousel from './components/Carousel.jsx';
 import logo from './assets/images/logooutline.svg';
 import YesButton from './components/Yes.jsx'; 
 import NoButton from './components/No.jsx'; 
