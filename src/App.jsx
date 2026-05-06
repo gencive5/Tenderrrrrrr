@@ -10,7 +10,7 @@ import LayeredDistortion from './components/LayeredDistortion';
 // import { Gradient } from './components/Gradient.js';
 // Import your PNG layers - create these in your assets/images/
 import layer1 from './assets/layer-pink.png';
-import layer2 from './assets/layer-red.png';
+import layer2 from './assets/layer-red2.png';
 import layer3 from './assets/layer-purple.png';
 
 function App() {
@@ -63,9 +63,9 @@ function App() {
       
       {/* Main Content - kept exactly as you have it */}
       <div className="main-zone">
-        <div className="logo-container">
+        {/* <div className="logo-container">
           <img src={logo} alt="Logo" className="logo" />
-        </div>
+        </div> */}
         <div className="carousel-container">
           <Carousel ref={carouselRef} />
         </div>
