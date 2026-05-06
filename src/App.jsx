@@ -8,8 +8,8 @@ import NoButton from './components/No.jsx';
 import LayeredDistortion from './components/LayeredDistortion';
 // import SimpleAnimatedGradient from './components/SimpleAnimatedGradient';
 // import { Gradient } from './components/Gradient.js';
-// Import your PNG layers - create these in your assets/images/
-import layer1 from './assets/layer-pink.png';
+
+import layer1 from './assets/layer-pink2.png';
 import layer2 from './assets/layer-red2.png';
 import layer3 from './assets/layer-purple.png';
 
