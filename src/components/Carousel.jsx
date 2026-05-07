@@ -106,6 +106,8 @@ const Carousel = forwardRef((props, ref) => {
   const threshold = 100;
   const likeButtonRef = useRef(null);
   const dislikeButtonRef = useRef(null);
+  const currentIntensityRef = useRef({ like: 0, dislike: 0 });
+  const animationFrameRef = useRef(null);
 
   const imageArray = [
     gel, couple, flower, fragile, framboise, hair, handi, hotdog,
@@ -133,28 +135,50 @@ const Carousel = forwardRef((props, ref) => {
     setSlides(shuffleArray(imageArray));
   }, []);
 
- const handleTouchStart = (e) => {
+  const handleTouchStart = (e) => {
     setDragging(true);
     setDragStartX(e.touches[0].clientX);
     setDragOffsetX(0);
+    // Reset intensity tracking
+    currentIntensityRef.current = { like: 0, dislike: 0 };
   };
 
-  const handleTouchMove = (e) => {
+ 
+
+    const handleTouchMove = (e) => {
     if (dragging) {
       const currentX = e.touches[0].clientX;
       const offset = currentX - dragStartX;
       setDragOffsetX(offset);
       
-      // Calculate swipe intensity based on drag distance (0 to 1)
       const intensity = Math.min(1, Math.abs(offset) / threshold);
+      const type = offset > 0 ? 'like' : 'dislike';
+      const oppositeType = offset > 0 ? 'dislike' : 'like';
       
-      // Trigger fizz on the corresponding button based on swipe direction
-      if (offset > 0 && intensity > 0.1) {
-        // Swiping right = Like
-        likeButtonRef.current?.triggerSwipeFizz(intensity);
-      } else if (offset < 0 && intensity > 0.1) {
-        // Swiping left = Dislike
-        dislikeButtonRef.current?.triggerSwipeFizz(intensity);
+      // Reset opposite button intensity
+      if (currentIntensityRef.current[oppositeType] > 0) {
+        currentIntensityRef.current[oppositeType] = 0;
+      }
+      
+      // Only trigger if intensity changed significantly
+      const intensityChanged = Math.abs(intensity - currentIntensityRef.current[type]) > 0.05;
+      
+      if (intensityChanged && intensity > 0.05) {
+        currentIntensityRef.current[type] = intensity;
+        
+        // Cancel previous animation frame
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current);
+        }
+        
+        // Use requestAnimationFrame for smooth updates
+        animationFrameRef.current = requestAnimationFrame(() => {
+          if (offset > 0) {
+            likeButtonRef.current?.triggerSwipeFizz(intensity);
+          } else if (offset < 0) {
+            dislikeButtonRef.current?.triggerSwipeFizz(intensity);
+          }
+        });
       }
     }
   };

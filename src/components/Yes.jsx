@@ -2,18 +2,16 @@ import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react'
 import ok from '../components/likenew.png';
 
 const FizzParticle = ({ id, onComplete, startPosition, intensity = 1, isFinal = false }) => {
-  // Scale particle behavior based on intensity (0-1)
   const intensityScale = Math.min(1, Math.max(0, intensity));
   
-  // More intense = larger particles, more spread out
   const distanceMultiplier = 0.5 + intensityScale * 1.5;
   const sizeMultiplier = 0.6 + intensityScale * 0.9;
-  const speedMultiplier = 0.2 + intensityScale * 0.2;
+  const speedMultiplier = 0.6 + intensityScale * 0.4;
   
   const angle = Math.random() * Math.PI * 2;
   const distance = (15 + Math.random() * 60) * distanceMultiplier;
   const xOffset = Math.cos(angle) * distance * (Math.random() > 0.5 ? 1 : -1);
-  const yOffset = (10 - Math.random() * 400) * (0.5 + intensityScale * 0.8);
+  const yOffset = (-40 - Math.random() * 80) * (0.5 + intensityScale * 0.8);
   
   const size = (15 + Math.random() * 30) * sizeMultiplier;
   const rotation = Math.random() * 360;
@@ -60,7 +58,6 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
   const animationTimeoutRef = useRef(null);
-  const lastIntensityRef = useRef(0);
 
   const getButtonCenter = () => {
     if (buttonRef.current) {
@@ -77,13 +74,17 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     const position = getButtonCenter();
     setButtonPosition(position);
     
-    // Scale particle count based on intensity - progressive
+    // Clear previous progressive particles to prevent stacking
+    if (!isFinal) {
+      setParticles(prev => prev.filter(p => !p.isFinal));
+    }
+    
     let particleCount;
     if (isFinal) {
-      particleCount = 12; // Final burst when swipe completes or button clicked
+      particleCount = 20; // Final burst when swipe completes or button clicked
     } else {
-      // Progressive: 2-18 particles based on intensity (0-1)
-      particleCount = Math.floor(2 + intensity * 6);
+      // Progressive during swipe: scales from 3 to 11 particles based on intensity
+      particleCount = Math.floor(3 + intensity * 8);
     }
     
     const newParticles = [];
@@ -97,7 +98,14 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
       });
     }
     
-    setParticles(prev => [...prev, ...newParticles]);
+    setParticles(prev => {
+      // Replace progressive particles with new ones, keep final burst particles
+      if (!isFinal) {
+        return [...prev.filter(p => p.isFinal), ...newParticles];
+      }
+      return [...prev, ...newParticles];
+    });
+    
     setNextParticleId(prev => prev + particleCount);
     
     // Clear previous timeout
@@ -108,18 +116,11 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     // Remove particles after animation completes
     animationTimeoutRef.current = setTimeout(() => {
       setParticles(prev => prev.filter(p => !newParticles.some(np => np.id === p.id)));
-    }, 1000);
+    }, 800);
   };
 
-  // Method to trigger fizz from swipe
   const triggerSwipeFizz = (intensity, isFinal = false) => {
     if (!buttonRef.current) return;
-    
-    // Store the intensity for reference
-    lastIntensityRef.current = intensity;
-    
-    // Always create particles with the current intensity
-    // No throttling - we want smooth progressive fizz during swipe
     createFizzParticles(intensity, isFinal);
   };
 
@@ -127,7 +128,7 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     if (isClicked) return;
     
     setIsClicked(true);
-    triggerSwipeFizz(1, true); // Full intensity on click with final burst
+    triggerSwipeFizz(1, true);
     handleNext();
 
     setTimeout(() => {
@@ -143,8 +144,6 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     triggerSwipeFizz,
   }));
 
-  
-
   return (
     <div style={{ position: 'relative', display: 'inline-block' }} ref={buttonRef}>
       <button 
@@ -158,7 +157,6 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
         <img src={ok} className="yes-icon" alt="yes" />
       </button>
       
-      {/* Fizz particles */}
       {particles.map(particle => (
         <FizzParticle 
           key={particle.id} 

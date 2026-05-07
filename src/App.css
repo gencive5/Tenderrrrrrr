@@ -11,7 +11,6 @@ body, html {
   text-align: center;
 }
 
-
 .custom-container {
   height: 100vh;
   width: 100%;
@@ -21,7 +20,6 @@ body, html {
   flex-wrap: nowrap;
   background: transparent;
 }
-
 
 .main-zone {
   background: transparent;
@@ -34,9 +32,6 @@ body, html {
   position: relative;
   z-index: 2;
 }
-
-
-
 
 .carousel-container {
   display: flex;
@@ -62,7 +57,6 @@ body, html {
   height: 100%;  
   position: relative;
   overflow: hidden;
-  
 }
 
 .carousel-item-wrapper {
@@ -71,7 +65,7 @@ body, html {
   justify-content: center;
   height: 100%;
   width: 100%;
-  position: absolute; /* Stack slides */
+  position: absolute;
   top: 0;
   left: 0;
   transition: transform 0.6s ease, opacity 0.6s ease;
@@ -85,7 +79,6 @@ body, html {
   margin: 2rem;
   overflow: hidden;
 }
-
 
 .carousel-item.swipe-left {
   animation: swipe-left 0.6s forwards;
@@ -117,7 +110,6 @@ body, html {
   }
 }
 
-
 .distortion-container {
   position: fixed;
   top: 0;
@@ -125,10 +117,8 @@ body, html {
   width: 100%;
   height: 100%;
   z-index: 1;
-  pointer-events: none; /* Allows clicking through to buttons */
+  pointer-events: none;
 }
-
-
 
 #gradient-canvas {
   width: 100%;
@@ -137,13 +127,10 @@ body, html {
   --gradient-color-2: #8C2A32; 
   --gradient-color-3: #D9ADAD;  
   --gradient-color-4: #D94E8F;
-  
   position: absolute; 
   top: 0;
   left: 0;
-
 }
-
 
 .button-container {
   position: fixed;
@@ -161,14 +148,23 @@ body, html {
   background-color: transparent;
   padding: 10px;
   transition: background-color 0.3s ease;
+  position: relative;
+  transition: transform 0.1s ease;
 }
 
+.yes-button:active {
+  transform: scale(0.95);
+}
+
+.yes-button:disabled {
+  opacity: 0.8;
+  cursor: wait;
+}
 
 .yes-icon {
   width: 70px;
   height: 70px;
 }
-
 
 .no-button {
   cursor: pointer;
@@ -178,15 +174,10 @@ body, html {
   transition: background-color 0.3s ease;
 }
 
-
-
 .no-icon {
   width: 70px;
   height: 70px;
 }
-
-
-
 
 @keyframes pop {
   0% {
@@ -203,91 +194,9 @@ body, html {
   }
 }
 
-
 /* ===== FIZZ BUTTON ANIMATION STYLES ===== */
 
-
-.yes-button {
-  position: relative;
-  transition: transform 0.1s ease;
-}
-
-.yes-button:active {
-  transform: scale(0.95);
-}
-
-.yes-button:disabled {
-  opacity: 0.8;
-  cursor: wait;
-}
-
-/* Fizz particles container positioning */
-.fizz-particle {
-  position: fixed;
-  pointer-events: none;
-  z-index: 1000;
-}
-
-/* Keyframes for the fizz animation */
-@keyframes fizzFloat {
-  0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
-  }
-  30% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--x-offset, 0px), var(--y-offset, -50px)) scale(0.3);
-    opacity: 0;
-  }
-}
-
-@keyframes fizzPulse {
-  0% {
-    transform: rotate(var(--rotation, 0deg)) scale(0.5);
-    opacity: 0;
-  }
-  20% {
-    transform: rotate(var(--rotation, 0deg)) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(calc(var(--rotation, 0deg) + 90deg)) scale(0.2);
-    opacity: 0;
-  }
-}
-
-@keyframes buttonPop {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.92);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-
-/* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-  .fizz-particle {
-    width: 30px !important;
-    height: 30px !important;
-    margin-left: -15px !important;
-    margin-top: -15px !important;
-  }
-  
-  .fizz-inner img {
-    width: 16px !important;
-    height: 16px !important;
-  }
-}
-
-/* Add to your App.css file */
-
+/* SINGLE DEFINITION OF FIZZFLOAT - KEEP ONLY THIS ONE */
 @keyframes fizzFloat {
   0% {
     transform: translate(-50%, -50%) translate(0, 0) scale(1);
@@ -302,6 +211,7 @@ body, html {
   }
 }
 
+/* SINGLE DEFINITION OF FIZZBUBBLE - KEEP ONLY THIS ONE */
 @keyframes fizzBubble {
   0% {
     transform: rotate(var(--rotation, 0deg)) scale(0.5);
@@ -317,6 +227,7 @@ body, html {
   }
 }
 
+/* SINGLE DEFINITION OF BUTTONPOP - KEEP ONLY THIS ONE */
 @keyframes buttonPop {
   0% {
     transform: scale(1);
@@ -326,5 +237,27 @@ body, html {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+/* Fizz particles container positioning */
+.fizz-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .fizz-particle {
+    width: 30px !important;
+    height: 30px !important;
+    margin-left: -15px !important;
+    margin-top: -15px !important;
+  }
+  
+  .fizz-inner img {
+    width: 16px !important;
+    height: 16px !important;
   }
 }

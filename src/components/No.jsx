@@ -6,12 +6,12 @@ const FizzParticle = ({ id, onComplete, startPosition, intensity = 1, isFinal = 
   
   const distanceMultiplier = 0.5 + intensityScale * 1.5;
   const sizeMultiplier = 0.6 + intensityScale * 0.9;
-  const speedMultiplier = 0.2 + intensityScale * 0.2;
+  const speedMultiplier = 0.6 + intensityScale * 0.4;
   
   const angle = Math.random() * Math.PI * 2;
   const distance = (15 + Math.random() * 60) * distanceMultiplier;
   const xOffset = Math.cos(angle) * distance * (Math.random() > 0.5 ? 1 : -1);
-  const yOffset = (10 - Math.random() * 400) * (0.5 + intensityScale * 0.8);
+  const yOffset = (-40 - Math.random() * 80) * (0.5 + intensityScale * 0.8);
   
   const size = (15 + Math.random() * 30) * sizeMultiplier;
   const rotation = Math.random() * 360;
@@ -58,7 +58,6 @@ const NoButton = forwardRef(({ handleNext }, ref) => {
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
   const animationTimeoutRef = useRef(null);
-  const lastIntensityRef = useRef(0);
 
   const getButtonCenter = () => {
     if (buttonRef.current) {
@@ -75,13 +74,17 @@ const NoButton = forwardRef(({ handleNext }, ref) => {
     const position = getButtonCenter();
     setButtonPosition(position);
     
-    // Scale particles based on intensity - more particles for higher intensity
+    // Clear previous progressive particles to prevent stacking
+    if (!isFinal) {
+      setParticles(prev => prev.filter(p => !p.isFinal));
+    }
+    
     let particleCount;
     if (isFinal) {
-      particleCount = 12; // Final burst
+      particleCount = 20; // Final burst when swipe completes or button clicked
     } else {
-      // Progressive: 2-18 particles based on intensity
-      particleCount = Math.floor(2 + intensity * 6);
+      // Progressive during swipe: scales from 3 to 11 particles based on intensity
+      particleCount = Math.floor(3 + intensity * 8);
     }
     
     const newParticles = [];
@@ -95,7 +98,14 @@ const NoButton = forwardRef(({ handleNext }, ref) => {
       });
     }
     
-    setParticles(prev => [...prev, ...newParticles]);
+    setParticles(prev => {
+      // Replace progressive particles with new ones, keep final burst particles
+      if (!isFinal) {
+        return [...prev.filter(p => p.isFinal), ...newParticles];
+      }
+      return [...prev, ...newParticles];
+    });
+    
     setNextParticleId(prev => prev + particleCount);
     
     // Clear previous timeout
@@ -106,17 +116,11 @@ const NoButton = forwardRef(({ handleNext }, ref) => {
     // Remove particles after animation completes
     animationTimeoutRef.current = setTimeout(() => {
       setParticles(prev => prev.filter(p => !newParticles.some(np => np.id === p.id)));
-    }, 1000);
+    }, 800);
   };
 
   const triggerSwipeFizz = (intensity, isFinal = false) => {
     if (!buttonRef.current) return;
-    
-    // Store the intensity for progressive effect
-    lastIntensityRef.current = intensity;
-    
-    // Always trigger but with the current intensity
-    // Don't throttle too aggressively - we want smooth progressive fizz
     createFizzParticles(intensity, isFinal);
   };
 
@@ -139,7 +143,6 @@ const NoButton = forwardRef(({ handleNext }, ref) => {
   useImperativeHandle(ref, () => ({
     triggerSwipeFizz,
   }));
-
 
   return (
     <div style={{ position: 'relative', display: 'inline-block' }} ref={buttonRef}>
