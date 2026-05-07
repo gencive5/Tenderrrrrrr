@@ -134,7 +134,7 @@ body, html {
 
 .button-container {
   position: fixed;
-  bottom: 1.4rem;
+  bottom: 1rem;
   display: flex;
   justify-content: space-between;
   width: 70%; 
