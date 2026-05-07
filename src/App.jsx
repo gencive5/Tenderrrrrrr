@@ -70,8 +70,9 @@ function App() {
           <Carousel ref={carouselRef} />
         </div>
         <div className="button-container">
-          <YesButton handleNext={() => triggerNextSlide('like')} />
           <NoButton handleNext={() => triggerNextSlide('dislike')} />
+          <YesButton handleNext={() => triggerNextSlide('like')} />
+          
         </div>
       </div>
     </div>

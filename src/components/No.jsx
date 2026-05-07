@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import cross from '../components/dislike.png';
+import cross from '../components/dislikenew.png';
 
 const FizzParticle = ({ id, onComplete, startPosition }) => {
   // Random position offset from button center
