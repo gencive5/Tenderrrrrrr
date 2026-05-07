@@ -96,8 +96,6 @@ import kim from '../assets/images/kim.webp';
 import lundi from '../assets/images/lundi.webp';
 import crakeo from '../assets/images/crakeo.webp';
 
-import like from '../assets/images/like.svg';
-import dislike from '../assets/images/dislike.svg';
 
 
 const Carousel = forwardRef((props, ref) => {
@@ -220,17 +218,6 @@ const Carousel = forwardRef((props, ref) => {
   return (
     <div className="carousel-wrapper">
      
-
-
-{swipeAnimation && (
-        <div
-          className={`swipe-animation2 ${
-            swipeAnimation === 'like' ? 'like-animation' : 'dislike-animation'
-          }`}
-        >
-        </div>
-      )}
-
       {/* Carousel */}
       <div
         className="carousel-container"
