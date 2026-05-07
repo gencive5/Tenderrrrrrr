@@ -2,12 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Carousel from './components/Carousel.jsx';
-import logo from './assets/images/logooutline.svg';
 import YesButton from './components/Yes.jsx'; 
 import NoButton from './components/No.jsx'; 
 import LayeredDistortion from './components/LayeredDistortion';
-// import SimpleAnimatedGradient from './components/SimpleAnimatedGradient';
-// import { Gradient } from './components/Gradient.js';
 
 import layer1 from './assets/layer-pink2.png';
 import layer2 from './assets/layer-red2.png';
@@ -15,7 +12,8 @@ import layer3 from './assets/layer-purple.png';
 
 function App() {
   const carouselRef = useRef(null);
-
+  const yesButtonRef = useRef(null);
+  const noButtonRef = useRef(null);
 
   const triggerNextSlide = (type) => {
     if (carouselRef.current) {
@@ -23,12 +21,16 @@ function App() {
     }
   };
 
+  // Pass button refs to carousel after they're created
+  useEffect(() => {
+    if (carouselRef.current) {
+      carouselRef.current.setLikeButtonRef?.(yesButtonRef.current);
+      carouselRef.current.setDislikeButtonRef?.(noButtonRef.current);
+    }
+  }, []);
+
   return (
     <div className="fullscreen-container">
-     
-      {/* <SimpleAnimatedGradient/> */}
-      
-      {/* Distortion Layers */}
       <div className="distortion-container">
         <LayeredDistortion 
           layers={[
@@ -38,7 +40,6 @@ function App() {
               volatility: 0.15,
               mouseMovementMultiplier: 0.005,
               opacity: 0.9, 
-              
               zIndex: 0
             },
             {
@@ -61,18 +62,13 @@ function App() {
         />
       </div>
       
-      {/* Main Content - kept exactly as you have it */}
       <div className="main-zone">
-        {/* <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
-        </div> */}
         <div className="carousel-container">
           <Carousel ref={carouselRef} />
         </div>
         <div className="button-container">
-          <NoButton handleNext={() => triggerNextSlide('dislike')} />
-          <YesButton handleNext={() => triggerNextSlide('like')} />
-          
+          <NoButton ref={noButtonRef} handleNext={() => triggerNextSlide('dislike')} />
+          <YesButton ref={yesButtonRef} handleNext={() => triggerNextSlide('like')} />
         </div>
       </div>
     </div>

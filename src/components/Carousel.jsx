@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from 'react';
 
 
 // Images
@@ -109,6 +109,8 @@ const Carousel = forwardRef((props, ref) => {
   const [swipeAnimation, setSwipeAnimation] = useState(null);
   const [slides, setSlides] = useState([]);
   const threshold = 100;
+  const likeButtonRef = useRef(null);
+  const dislikeButtonRef = useRef(null);
 
   const imageArray = [
     gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog,
@@ -136,22 +138,47 @@ const Carousel = forwardRef((props, ref) => {
     setSlides(shuffleArray(imageArray));
   }, []);
 
-  const handleTouchStart = (e) => {
+ const handleTouchStart = (e) => {
     setDragging(true);
     setDragStartX(e.touches[0].clientX);
+    setDragOffsetX(0);
   };
 
   const handleTouchMove = (e) => {
     if (dragging) {
       const currentX = e.touches[0].clientX;
-      setDragOffsetX(currentX - dragStartX);
+      const offset = currentX - dragStartX;
+      setDragOffsetX(offset);
+      
+      // Calculate swipe intensity based on drag distance (0 to 1)
+      const intensity = Math.min(1, Math.abs(offset) / threshold);
+      
+      // Trigger fizz on the corresponding button based on swipe direction
+      if (offset > 0 && intensity > 0.1) {
+        // Swiping right = Like
+        likeButtonRef.current?.triggerSwipeFizz(intensity);
+      } else if (offset < 0 && intensity > 0.1) {
+        // Swiping left = Dislike
+        dislikeButtonRef.current?.triggerSwipeFizz(intensity);
+      }
     }
   };
 
   const handleTouchEnd = () => {
     setDragging(false);
+    const intensity = Math.min(1, Math.abs(dragOffsetX) / threshold);
+    
     if (Math.abs(dragOffsetX) > threshold) {
-      triggerAnimation(dragOffsetX < 0 ? 'dislike' : 'like');
+      const type = dragOffsetX < 0 ? 'dislike' : 'like';
+      
+      // Final burst on completion
+      if (type === 'like') {
+        likeButtonRef.current?.triggerSwipeFizz(1, true);
+      } else {
+        dislikeButtonRef.current?.triggerSwipeFizz(1, true);
+      }
+      
+      triggerAnimation(type);
       handleNextSlide();
     }
     setDragOffsetX(0);
@@ -168,12 +195,19 @@ const Carousel = forwardRef((props, ref) => {
 
   const triggerButtonAction = (type) => {
     triggerAnimation(type);
+    // Trigger full intensity burst when button is clicked
+    if (type === 'like') {
+      likeButtonRef.current?.triggerSwipeFizz(1, true);
+    } else {
+      dislikeButtonRef.current?.triggerSwipeFizz(1, true);
+    }
     handleNextSlide();
   };
 
-  // Expose `triggerButtonAction` to the parent via ref
   useImperativeHandle(ref, () => ({
     triggerButtonAction,
+    setLikeButtonRef: (btnRef) => { likeButtonRef.current = btnRef; },
+    setDislikeButtonRef: (btnRef) => { dislikeButtonRef.current = btnRef; },
   }));
 
   const getTransformStyle = (index) => {

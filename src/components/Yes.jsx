@@ -1,21 +1,23 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import ok from '../components/likenew.png';
 
-const FizzParticle = ({ id, onComplete, startPosition }) => {
-  // Random position offset from button center
+const FizzParticle = ({ id, onComplete, startPosition, intensity = 1, isFinal = false }) => {
+  // Scale particle behavior based on intensity (0-1)
+  const intensityScale = Math.min(1, Math.max(0, intensity));
+  
+  // More intense = larger particles, more spread out
+  const distanceMultiplier = 0.5 + intensityScale * 1.5;
+  const sizeMultiplier = 0.6 + intensityScale * 0.9;
+  const speedMultiplier = 0.6 + intensityScale * 0.8;
+  
   const angle = Math.random() * Math.PI * 2;
-  const distance = 15 + Math.random() * 60;
+  const distance = (15 + Math.random() * 60) * distanceMultiplier;
   const xOffset = Math.cos(angle) * distance * (Math.random() > 0.5 ? 1 : -1);
-  const yOffset = -40 - Math.random() * 80; // upward direction
+  const yOffset = (-40 - Math.random() * 80) * (0.5 + intensityScale * 0.8);
   
-  // Random size variation
-  const size = 20 + Math.random() * 25;
-  
-  // Random rotation
+  const size = (15 + Math.random() * 30) * sizeMultiplier;
   const rotation = Math.random() * 360;
-  
-  // Random animation duration
-  const duration = 0.5 + Math.random() * 0.6;
+  const duration = (0.4 + Math.random() * 0.5) / speedMultiplier;
   const delay = Math.random() * 0.1;
   
   return (
@@ -44,19 +46,20 @@ const FizzParticle = ({ id, onComplete, startPosition }) => {
           objectFit: 'contain',
           transform: `rotate(${rotation}deg) scale(0.8)`,
           animation: `fizzBubble ${duration}s ease-out ${delay}s forwards`,
-          opacity: 0.9,
+          opacity: 0.6 + intensityScale * 0.4,
         }}
       />
     </div>
   );
 };
 
-const YesButton = ({ handleNext }) => {
+const YesButton = forwardRef(({ handleNext }, ref) => {
   const [isClicked, setIsClicked] = useState(false);
   const [particles, setParticles] = useState([]);
   const [nextParticleId, setNextParticleId] = useState(0);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
+  const activeAnimationsRef = useRef({});
 
   const getButtonCenter = () => {
     if (buttonRef.current) {
@@ -69,33 +72,61 @@ const YesButton = ({ handleNext }) => {
     return { x: 0, y: 0 };
   };
 
-  const createFizzParticles = () => {
+  const createFizzParticles = (intensity = 1, isFinal = false) => {
     const position = getButtonCenter();
     setButtonPosition(position);
     
-    const particleCount = 12; // Number of mini like.png bubbles
+    // Scale particle count based on intensity (2 to 20 particles)
+    // Final burst gets max particles
+    const baseCount = isFinal ? 20 : Math.floor(2 + intensity * 12);
+    const particleCount = Math.min(25, baseCount);
+    
     const newParticles = [];
+    const animationId = Date.now() + Math.random();
     
     for (let i = 0; i < particleCount; i++) {
       newParticles.push({
         id: nextParticleId + i,
+        intensity: intensity,
+        isFinal: isFinal,
       });
     }
     
     setParticles(prev => [...prev, ...newParticles]);
     setNextParticleId(prev => prev + particleCount);
     
+    // Store animation ID to prevent too many concurrent animations
+    if (activeAnimationsRef.current.timeout) {
+      clearTimeout(activeAnimationsRef.current.timeout);
+    }
+    
     // Remove particles after animation completes
-    setTimeout(() => {
+    activeAnimationsRef.current.timeout = setTimeout(() => {
       setParticles(prev => prev.filter(p => !newParticles.some(np => np.id === p.id)));
-    }, 1200);
+    }, 1000);
+  };
+
+  // Method to trigger fizz from swipe
+  const triggerSwipeFizz = (intensity, isFinal = false) => {
+    if (!buttonRef.current) return;
+    
+    // Throttle rapid triggers - but allow final burst
+    if (!isFinal && activeAnimationsRef.current.lastTrigger) {
+      const now = Date.now();
+      if (now - activeAnimationsRef.current.lastTrigger < 50) {
+        return;
+      }
+    }
+    
+    activeAnimationsRef.current.lastTrigger = Date.now();
+    createFizzParticles(intensity, isFinal);
   };
 
   const handleClick = () => {
     if (isClicked) return;
     
     setIsClicked(true);
-    createFizzParticles();
+    triggerSwipeFizz(1, true); // Full intensity on click
     handleNext();
 
     setTimeout(() => {
@@ -107,55 +138,63 @@ const YesButton = ({ handleNext }) => {
     setParticles(prev => prev.filter(p => p.id !== id));
   };
 
+  useImperativeHandle(ref, () => ({
+    triggerSwipeFizz,
+  }));
+
   // Inject keyframe animations
   React.useEffect(() => {
-    const styleSheet = document.createElement("style");
-    styleSheet.textContent = `
-      @keyframes fizzFloat {
-        0% {
-          transform: translate(-50%, -50%) translate(0, 0) scale(1);
-          opacity: 1;
+    if (!document.querySelector('#fizz-animations')) {
+      const styleSheet = document.createElement("style");
+      styleSheet.id = 'fizz-animations';
+      styleSheet.textContent = `
+        @keyframes fizzFloat {
+          0% {
+            transform: translate(-50%, -50%) translate(0, 0) scale(1);
+            opacity: 1;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) translate(var(--x-offset, 0px), var(--y-offset, -50px)) scale(0.3);
+            opacity: 0;
+          }
         }
-        50% {
-          opacity: 1;
+        
+        @keyframes fizzBubble {
+          0% {
+            transform: rotate(var(--rotation, 0deg)) scale(0.5);
+            opacity: 0;
+          }
+          30% {
+            transform: rotate(var(--rotation, 0deg)) scale(1.2);
+            opacity: 1;
+          }
+          100% {
+            transform: rotate(calc(var(--rotation, 0deg) + 180deg)) scale(0.4);
+            opacity: 0;
+          }
         }
-        100% {
-          transform: translate(-50%, -50%) translate(var(--x-offset, 0px), var(--y-offset, -50px)) scale(0.3);
-          opacity: 0;
+        
+        @keyframes buttonPop {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(0.9);
+          }
+          100% {
+            transform: scale(1);
+          }
         }
-      }
-      
-      @keyframes fizzBubble {
-        0% {
-          transform: rotate(var(--rotation, 0deg)) scale(0.5);
-          opacity: 0;
-        }
-        30% {
-          transform: rotate(var(--rotation, 0deg)) scale(1.2);
-          opacity: 1;
-        }
-        100% {
-          transform: rotate(calc(var(--rotation, 0deg) + 180deg)) scale(0.4);
-          opacity: 0;
-        }
-      }
-      
-      @keyframes buttonPop {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(0.9);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-    `;
-    document.head.appendChild(styleSheet);
+      `;
+      document.head.appendChild(styleSheet);
+    }
     
     return () => {
-      document.head.removeChild(styleSheet);
+      const styleElement = document.querySelector('#fizz-animations');
+      if (styleElement) styleElement.remove();
     };
   }, []);
 
@@ -172,17 +211,19 @@ const YesButton = ({ handleNext }) => {
         <img src={ok} className="yes-icon" alt="yes" />
       </button>
       
-      {/* Fizz particles - mini like.png images */}
+      {/* Fizz particles */}
       {particles.map(particle => (
         <FizzParticle 
           key={particle.id} 
           id={particle.id} 
           onComplete={removeParticle}
           startPosition={buttonPosition}
+          intensity={particle.intensity}
+          isFinal={particle.isFinal}
         />
       ))}
     </div>
   );
-};
+});
 
 export default YesButton;

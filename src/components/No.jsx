@@ -1,21 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
 import cross from '../components/dislikenew.png';
 
-const FizzParticle = ({ id, onComplete, startPosition }) => {
-  // Random position offset from button center
+const FizzParticle = ({ id, onComplete, startPosition, intensity = 1, isFinal = false }) => {
+  const intensityScale = Math.min(1, Math.max(0, intensity));
+  
+  const distanceMultiplier = 0.5 + intensityScale * 1.5;
+  const sizeMultiplier = 0.6 + intensityScale * 0.9;
+  const speedMultiplier = 0.6 + intensityScale * 0.8;
+  
   const angle = Math.random() * Math.PI * 2;
-  const distance = 15 + Math.random() * 60;
+  const distance = (15 + Math.random() * 60) * distanceMultiplier;
   const xOffset = Math.cos(angle) * distance * (Math.random() > 0.5 ? 1 : -1);
-  const yOffset = -40 - Math.random() * 80; // upward direction
+  const yOffset = (-40 - Math.random() * 80) * (0.5 + intensityScale * 0.8);
   
-  // Random size variation
-  const size = 20 + Math.random() * 25;
-  
-  // Random rotation
+  const size = (15 + Math.random() * 30) * sizeMultiplier;
   const rotation = Math.random() * 360;
-  
-  // Random animation duration
-  const duration = 0.5 + Math.random() * 0.6;
+  const duration = (0.4 + Math.random() * 0.5) / speedMultiplier;
   const delay = Math.random() * 0.1;
   
   return (
@@ -44,19 +44,20 @@ const FizzParticle = ({ id, onComplete, startPosition }) => {
           objectFit: 'contain',
           transform: `rotate(${rotation}deg) scale(0.8)`,
           animation: `fizzBubble ${duration}s ease-out ${delay}s forwards`,
-          opacity: 0.9,
+          opacity: 0.6 + intensityScale * 0.4,
         }}
       />
     </div>
   );
 };
 
-const NoButton = ({ handleNext }) => {
+const NoButton = forwardRef(({ handleNext }, ref) => {
   const [isClicked, setIsClicked] = useState(false);
   const [particles, setParticles] = useState([]);
   const [nextParticleId, setNextParticleId] = useState(0);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
+  const activeAnimationsRef = useRef({});
 
   const getButtonCenter = () => {
     if (buttonRef.current) {
@@ -69,33 +70,54 @@ const NoButton = ({ handleNext }) => {
     return { x: 0, y: 0 };
   };
 
-  const createFizzParticles = () => {
+  const createFizzParticles = (intensity = 1, isFinal = false) => {
     const position = getButtonCenter();
     setButtonPosition(position);
     
-    const particleCount = 12; // Number of mini dislike.png bubbles
+    const baseCount = isFinal ? 20 : Math.floor(2 + intensity * 12);
+    const particleCount = Math.min(25, baseCount);
+    
     const newParticles = [];
     
     for (let i = 0; i < particleCount; i++) {
       newParticles.push({
         id: nextParticleId + i,
+        intensity: intensity,
+        isFinal: isFinal,
       });
     }
     
     setParticles(prev => [...prev, ...newParticles]);
     setNextParticleId(prev => prev + particleCount);
     
-    // Remove particles after animation completes
-    setTimeout(() => {
+    if (activeAnimationsRef.current.timeout) {
+      clearTimeout(activeAnimationsRef.current.timeout);
+    }
+    
+    activeAnimationsRef.current.timeout = setTimeout(() => {
       setParticles(prev => prev.filter(p => !newParticles.some(np => np.id === p.id)));
-    }, 1200);
+    }, 1000);
+  };
+
+  const triggerSwipeFizz = (intensity, isFinal = false) => {
+    if (!buttonRef.current) return;
+    
+    if (!isFinal && activeAnimationsRef.current.lastTrigger) {
+      const now = Date.now();
+      if (now - activeAnimationsRef.current.lastTrigger < 50) {
+        return;
+      }
+    }
+    
+    activeAnimationsRef.current.lastTrigger = Date.now();
+    createFizzParticles(intensity, isFinal);
   };
 
   const handleClick = () => {
     if (isClicked) return;
     
     setIsClicked(true);
-    createFizzParticles();
+    triggerSwipeFizz(1, true);
     handleNext();
 
     setTimeout(() => {
@@ -107,9 +129,11 @@ const NoButton = ({ handleNext }) => {
     setParticles(prev => prev.filter(p => p.id !== id));
   };
 
-  // Inject keyframe animations if not already added by YesButton
+  useImperativeHandle(ref, () => ({
+    triggerSwipeFizz,
+  }));
+
   React.useEffect(() => {
-    // Check if animations already exist to avoid duplicates
     if (!document.querySelector('#fizz-animations')) {
       const styleSheet = document.createElement("style");
       styleSheet.id = 'fizz-animations';
@@ -159,9 +183,8 @@ const NoButton = ({ handleNext }) => {
     }
     
     return () => {
-      // Optional: cleanup if you want to remove when component unmounts
-      // const styleElement = document.querySelector('#fizz-animations');
-      // if (styleElement) styleElement.remove();
+      const styleElement = document.querySelector('#fizz-animations');
+      if (styleElement) styleElement.remove();
     };
   }, []);
 
@@ -178,17 +201,18 @@ const NoButton = ({ handleNext }) => {
         <img src={cross} className="no-icon" alt="no" />
       </button>
       
-      {/* Fizz particles - mini dislike.png images */}
       {particles.map(particle => (
         <FizzParticle 
           key={particle.id} 
           id={particle.id} 
           onComplete={removeParticle}
           startPosition={buttonPosition}
+          intensity={particle.intensity}
+          isFinal={particle.isFinal}
         />
       ))}
     </div>
   );
-};
+});
 
 export default NoButton;
