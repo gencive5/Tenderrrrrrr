@@ -59,7 +59,8 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
   const [nextParticleId, setNextParticleId] = useState(0);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const buttonRef = useRef(null);
-  const activeAnimationsRef = useRef({});
+  const animationTimeoutRef = useRef(null);
+  const lastIntensityRef = useRef(0);
 
   const getButtonCenter = () => {
     if (buttonRef.current) {
@@ -76,17 +77,21 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     const position = getButtonCenter();
     setButtonPosition(position);
     
-    // Scale particle count based on intensity (2 to 20 particles)
-    // Final burst gets max particles
-    const baseCount = isFinal ? 20 : Math.floor(2 + intensity * 12);
-    const particleCount = Math.min(25, baseCount);
+    // Scale particle count based on intensity - progressive
+    let particleCount;
+    if (isFinal) {
+      particleCount = 25; // Final burst when swipe completes or button clicked
+    } else {
+      // Progressive: 2-18 particles based on intensity (0-1)
+      particleCount = Math.floor(2 + intensity * 16);
+    }
     
     const newParticles = [];
-    const animationId = Date.now() + Math.random();
+    const timestamp = Date.now();
     
     for (let i = 0; i < particleCount; i++) {
       newParticles.push({
-        id: nextParticleId + i,
+        id: `${timestamp}-${nextParticleId + i}-${Math.random()}`,
         intensity: intensity,
         isFinal: isFinal,
       });
@@ -95,13 +100,13 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     setParticles(prev => [...prev, ...newParticles]);
     setNextParticleId(prev => prev + particleCount);
     
-    // Store animation ID to prevent too many concurrent animations
-    if (activeAnimationsRef.current.timeout) {
-      clearTimeout(activeAnimationsRef.current.timeout);
+    // Clear previous timeout
+    if (animationTimeoutRef.current) {
+      clearTimeout(animationTimeoutRef.current);
     }
     
     // Remove particles after animation completes
-    activeAnimationsRef.current.timeout = setTimeout(() => {
+    animationTimeoutRef.current = setTimeout(() => {
       setParticles(prev => prev.filter(p => !newParticles.some(np => np.id === p.id)));
     }, 1000);
   };
@@ -110,15 +115,11 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
   const triggerSwipeFizz = (intensity, isFinal = false) => {
     if (!buttonRef.current) return;
     
-    // Throttle rapid triggers - but allow final burst
-    if (!isFinal && activeAnimationsRef.current.lastTrigger) {
-      const now = Date.now();
-      if (now - activeAnimationsRef.current.lastTrigger < 50) {
-        return;
-      }
-    }
+    // Store the intensity for reference
+    lastIntensityRef.current = intensity;
     
-    activeAnimationsRef.current.lastTrigger = Date.now();
+    // Always create particles with the current intensity
+    // No throttling - we want smooth progressive fizz during swipe
     createFizzParticles(intensity, isFinal);
   };
 
@@ -126,7 +127,7 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     if (isClicked) return;
     
     setIsClicked(true);
-    triggerSwipeFizz(1, true); // Full intensity on click
+    triggerSwipeFizz(1, true); // Full intensity on click with final burst
     handleNext();
 
     setTimeout(() => {
