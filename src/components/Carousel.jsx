@@ -28,7 +28,6 @@ import signal from '../assets/images/signal.webp';
 import rip from '../assets/images/rip.webp';
 import local from '../assets/images/local.webp';
 import chair from '../assets/images/chair.webp';
-import faim from '../assets/images/faim.webp';
 import tube from '../assets/images/tube.webp';
 import sunset from '../assets/images/sunset.webp';
 import spider from '../assets/images/spider.webp';
@@ -113,7 +112,7 @@ const Carousel = forwardRef((props, ref) => {
     gel, couple, flower, fragile, framboise, hair, handi, hotdog,
     petitpois, soap, cig, mop, manipuladora, sun, max, woman, playboy,
     stanley, plant, chico, paris, soup, shoes, signal,
-    rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,
+    rip, local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats,
     eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
     orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges,
