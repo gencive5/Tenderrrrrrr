@@ -12,7 +12,6 @@ import hotdog from '../assets/images/hotdog.webp';
 import cig from '../assets/images/longlongcig.webp';
 import manipuladora from '../assets/images/manipuladora.webp';
 import mop from '../assets/images/mop.webp';
-import megot from '../assets/images/megot.webp';
 import paris from '../assets/images/paris.webp';
 import petitpois from '../assets/images/petitpois.webp';
 import plant from '../assets/images/plant.webp';
@@ -109,7 +108,7 @@ const Carousel = forwardRef((props, ref) => {
   const dislikeButtonRef = useRef(null);
 
   const imageArray = [
-    gel, couple, megot, flower, fragile, framboise, hair, handi, hotdog,
+    gel, couple, flower, fragile, framboise, hair, handi, hotdog,
     petitpois, soap, cig, mop, manipuladora, sun, max, woman, playboy,
     stanley, plant, chico, paris, soup, shoes, signal,
     rip, faim, local, chair, tube, sunset, spider, savon, purple, melon,

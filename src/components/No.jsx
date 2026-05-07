@@ -6,12 +6,12 @@ const FizzParticle = ({ id, onComplete, startPosition, intensity = 1, isFinal = 
   
   const distanceMultiplier = 0.5 + intensityScale * 1.5;
   const sizeMultiplier = 0.6 + intensityScale * 0.9;
-  const speedMultiplier = 0.6 + intensityScale * 0.8;
+  const speedMultiplier = 0.2 + intensityScale * 0.2;
   
   const angle = Math.random() * Math.PI * 2;
   const distance = (15 + Math.random() * 60) * distanceMultiplier;
   const xOffset = Math.cos(angle) * distance * (Math.random() > 0.5 ? 1 : -1);
-  const yOffset = (-40 - Math.random() * 80) * (0.5 + intensityScale * 0.8);
+  const yOffset = (10 - Math.random() * 400) * (0.5 + intensityScale * 0.8);
   
   const size = (15 + Math.random() * 30) * sizeMultiplier;
   const rotation = Math.random() * 360;
@@ -140,60 +140,6 @@ const NoButton = forwardRef(({ handleNext }, ref) => {
     triggerSwipeFizz,
   }));
 
-  React.useEffect(() => {
-    if (!document.querySelector('#fizz-animations')) {
-      const styleSheet = document.createElement("style");
-      styleSheet.id = 'fizz-animations';
-      styleSheet.textContent = `
-        @keyframes fizzFloat {
-          0% {
-            transform: translate(-50%, -50%) translate(0, 0) scale(1);
-            opacity: 1;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: translate(-50%, -50%) translate(var(--x-offset, 0px), var(--y-offset, -50px)) scale(0.3);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes fizzBubble {
-          0% {
-            transform: rotate(var(--rotation, 0deg)) scale(0.5);
-            opacity: 0;
-          }
-          30% {
-            transform: rotate(var(--rotation, 0deg)) scale(1.2);
-            opacity: 1;
-          }
-          100% {
-            transform: rotate(calc(var(--rotation, 0deg) + 180deg)) scale(0.4);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes buttonPop {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(0.9);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-      `;
-      document.head.appendChild(styleSheet);
-    }
-    
-    return () => {
-      const styleElement = document.querySelector('#fizz-animations');
-      if (styleElement) styleElement.remove();
-    };
-  }, []);
 
   return (
     <div style={{ position: 'relative', display: 'inline-block' }} ref={buttonRef}>
