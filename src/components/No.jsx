@@ -11,7 +11,7 @@ const FizzParticle = ({ id, onComplete, startPosition, intensity = 1, isFinal = 
   const angle = Math.random() * Math.PI * 2;
   const distance = (15 + Math.random() * 60) * distanceMultiplier;
   const xOffset = Math.cos(angle) * distance * (Math.random() > 0.5 ? 1 : -1);
-  const yOffset = (-40 - Math.random() * 80) * (0.5 + intensityScale * 0.8);
+  const yOffset = (-40 - Math.random() * 200) * (0.5 + intensityScale * 0.8);
   
   const size = (15 + Math.random() * 30) * sizeMultiplier;
   const rotation = Math.random() * 360;
