@@ -78,10 +78,10 @@ const NoButton = forwardRef(({ handleNext }, ref) => {
     // Scale particles based on intensity - more particles for higher intensity
     let particleCount;
     if (isFinal) {
-      particleCount = 25; // Final burst
+      particleCount = 12; // Final burst
     } else {
       // Progressive: 2-18 particles based on intensity
-      particleCount = Math.floor(2 + intensity * 16);
+      particleCount = Math.floor(2 + intensity * 6);
     }
     
     const newParticles = [];

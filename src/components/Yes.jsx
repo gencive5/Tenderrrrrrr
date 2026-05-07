@@ -80,10 +80,10 @@ const YesButton = forwardRef(({ handleNext }, ref) => {
     // Scale particle count based on intensity - progressive
     let particleCount;
     if (isFinal) {
-      particleCount = 25; // Final burst when swipe completes or button clicked
+      particleCount = 12; // Final burst when swipe completes or button clicked
     } else {
       // Progressive: 2-18 particles based on intensity (0-1)
-      particleCount = Math.floor(2 + intensity * 16);
+      particleCount = Math.floor(2 + intensity * 6);
     }
     
     const newParticles = [];

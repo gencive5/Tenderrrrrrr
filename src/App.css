@@ -35,42 +35,7 @@ body, html {
   z-index: 2;
 }
 
-.logo-container {
-  position: absolute; 
-  top: 2rem; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  z-index: 1;
-  
-}
 
-@media only screen and (min-width: 992px) {
-.logo-container {
-  position: absolute; 
-  top: 2rem; 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 65%;
-  z-index: 1;
-}
-
-.logo {
-  width: 20%;
-  height: auto;
-}
-
-}
-
-
-.logo {
-  width: 20%;
-  height: auto;
-}
 
 
 .carousel-container {
@@ -182,7 +147,7 @@ body, html {
 
 .button-container {
   position: fixed;
-  bottom: 2rem;
+  bottom: 1.4rem;
   display: flex;
   justify-content: space-between;
   width: 70%; 
@@ -222,38 +187,6 @@ body, html {
 
 
 
-.swipe-animation {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 80;
-  animation: pop 1s ease-out forwards;
-  z-index: 1;
-}
-
-.swipe-animation2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 80;
-  animation: pop 0.8s ease-out forwards;
-  z-index: 100;
-}
-
-.like-animation {
-  color: green;
-}
-
-.dislike-animation {
-  color: red;
-}
-
-.swipe-img {
-  width: 800px;
-  height: 800px;
-}
 
 @keyframes pop {
   0% {
