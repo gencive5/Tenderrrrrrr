@@ -1,5 +1,5 @@
 import React, { useState, useRef, forwardRef, useImperativeHandle } from 'react';
-import cross from '../components/dislikenew.png';
+import cross from '../components/dislike.png';
 
 const FizzParticle = ({ id, onComplete, startPosition, intensity = 1, isFinal = false }) => {
   const intensityScale = Math.min(1, Math.max(0, intensity));
