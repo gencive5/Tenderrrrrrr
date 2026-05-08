@@ -45,23 +45,3 @@ button:focus-visible {
 }
 
 
-
-
-
-
-@font-face {
-  font-family: 'abc';
-  src: local('abc'), url('assets/fonts/ABCMaxiRound-Regular-Trial.woff') format('woff'), url('assets/fonts/ABCMaxiRound-Regular-Trial.woff2') format('woff2');
-
-  font-weight: 330; /* Adjust font weight if necessary */
-  font-style: normal; /* Adjust font style if necessary */
-}
-
-
-@font-face {
-  font-family: 'arial5';
-  src: local('arial5'), url('assets/fonts/Arial5.woff') format('woff'), url('assets/fonts/Arial5.woff2') format('woff2');
-
-  font-weight: 330; /* Adjust font weight if necessary */
-  font-style: normal; /* Adjust font style if necessary */
-}
