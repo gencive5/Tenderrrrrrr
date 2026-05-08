@@ -74,8 +74,8 @@ body, html {
   width: auto;
   height: 80%;  
   object-fit: contain;
-  padding: 1rem;
-  margin: 2rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
   overflow: hidden;
 }
 

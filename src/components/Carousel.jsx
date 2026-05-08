@@ -149,7 +149,6 @@ import ciseaux from '../assets/images/ciseaux.webp';
 import coeur from '../assets/images/coeur.webp';
 import cookie2 from '../assets/images/cookie2.webp';
 import coupant from '../assets/images/coupant.webp';
-import croissant from '../assets/images/croissant.webp';
 import fantomes from '../assets/images/fantomes.webp';
 import fauteuilnoir from '../assets/images/fauteuilnoir.webp';
 import fauteuilsrouges from '../assets/images/fauteuilsrouges.webp';
@@ -209,7 +208,7 @@ const Carousel = forwardRef((props, ref) => {
     jackdaniels, grabuge, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
     dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
     usb, vodka, aniosafe, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
-    cookie2, coupant, croissant, fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
+    cookie2, coupant, fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
     icecreamtruck, jaune, mariage, monstrecookie, neo, pancakes, plateau, pommedepin, pommes,
     radiateur, rosiers, sacpoubelle, siempre, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
     velo, verre, voitures
