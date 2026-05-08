@@ -157,7 +157,6 @@ import guyhoquet from '../assets/images/guyhoquet.webp';
 import hortensia from '../assets/images/hortensia.webp';
 import icecreamtruck from '../assets/images/icecreamtruck.webp';
 import jaune from '../assets/images/jaune.webp';
-import mariage from '../assets/images/mariage.webp';
 import monstrecookie from '../assets/images/monstrecookie.webp';
 import neo from '../assets/images/neo.webp';
 import pancakes from '../assets/images/pancakes.webp';
@@ -215,7 +214,7 @@ const Carousel = forwardRef((props, ref) => {
     usb, vodka, aniosafe, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
     cookie2, coupant, 
     fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
-    icecreamtruck, jaune, mariage, monstrecookie, neo, pancakes, plateau, pommedepin, pommes,
+    icecreamtruck, jaune, monstrecookie, neo, pancakes, plateau, pommedepin, pommes,
     radiateur, rosiers, sacpoubelle, siempre, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
     velo, verre, voitures
   ];
