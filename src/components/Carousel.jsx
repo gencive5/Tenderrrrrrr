@@ -9,7 +9,6 @@ import framboise from '../assets/images/framboise.webp';
 import hair from '../assets/images/hair.webp';
 import handi from '../assets/images/handi.webp';
 import hotdog from '../assets/images/hotdog.webp';
-import cig from '../assets/images/longlongcig.webp';
 import manipuladora from '../assets/images/manipuladora.webp';
 import mop from '../assets/images/mop.webp';
 import paris from '../assets/images/paris.webp';
@@ -54,7 +53,6 @@ import wolves from '../assets/images/wolves.webp';
 import orange from '../assets/images/orange.webp';
 import guy from '../assets/images/guy2.webp';
 import cone from '../assets/images/cone.webp';
-import aceite from '../assets/images/aceite.webp';
 import cables from '../assets/images/cables.webp';
 import carrots from '../assets/images/carrots.webp';
 import chairs from '../assets/images/chairs.webp';
@@ -202,12 +200,12 @@ const Carousel = forwardRef((props, ref) => {
 
   const imageArray = [
     gel, couple, flower, fragile, framboise, hair, handi, hotdog,
-    petitpois, soap, cig, mop, manipuladora, sun, max, woman, playboy,
+    petitpois, soap, mop, manipuladora, sun, max, woman, playboy,
     stanley, plant, chico, paris, soup, shoes, signal,
     local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats,
     eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
-    orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges,
+    orange, guy, cone, cables, carrots, chairs, fraise, papier, lime, oranges,
     orb, salsa, seau, tpe, girl, brain, danette, diesel, girlstop, fall, ice,
     jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
     truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina, tartepommes,
