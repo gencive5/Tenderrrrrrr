@@ -1,72 +1,86 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import * as THREE from 'three';
+import { useEffect, useRef, useState, useCallback } from "react";
+import * as THREE from "three";
 
-const LayeredDistortion = ({ layers = [] }) => {
+const DistortionLayer = ({
+  imageUrl,
+  speed = 0.6,
+  volatility = 0.25,
+  mouseMovementMultiplier = 0.01,
+  hoverMultiplier = 1.2,
+  colorTint = "#ffffff",
+  zIndex = 0,
+  opacity = 1
+}) => {
   const containerRef = useRef(null);
   const rendererRef = useRef(null);
   const sceneRef = useRef(null);
   const cameraRef = useRef(null);
-  const meshesRef = useRef([]);
+  const materialRef = useRef(null);
+  const textureRef = useRef(null);
   const frameRef = useRef(null);
+  const meshRef = useRef(null);
+  
+  const [imageLoaded, setImageLoaded] = useState(false);
   const timeRef = useRef(0);
-  const texturesRef = useRef([]);
-  
-  const [allImagesLoaded, setAllImagesLoaded] = useState(false);
-  const imagesLoadedRef = useRef(0);
-  
-  // Mouse tracking for all layers
+
+
+
+
+
+
   const mouseMovementRef = useRef(0);
   const lastMousePositionRef = useRef({ x: 0, y: 0 });
   const mouseActiveRef = useRef(false);
   const hoverActiveRef = useRef(false);
   const isDesktopRef = useRef(window.innerWidth > 768);
 
-  // Load all textures
+  // Load image
   useEffect(() => {
-    if (!layers.length) return;
+    if (!imageUrl) return;
     
-    imagesLoadedRef.current = 0;
-    const loadedTextures = [];
+    let mounted = true;
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
     
-    layers.forEach((layer, index) => {
-      const img = new Image();
-      img.crossOrigin = "Anonymous";
-      
-      img.onload = () => {
-        const texture = new THREE.Texture(img);
-        texture.minFilter = THREE.LinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.needsUpdate = true;
-        loadedTextures[index] = texture;
-        texturesRef.current[index] = texture;
-        
-        imagesLoadedRef.current++;
-        if (imagesLoadedRef.current === layers.length) {
-          setAllImagesLoaded(true);
-        }
-      };
-      
-      img.onerror = (err) => {
-        console.error(`Failed to load image for layer ${index}:`, layer.imageUrl, err);
-        imagesLoadedRef.current++;
-        if (imagesLoadedRef.current === layers.length) {
-          setAllImagesLoaded(true);
-        }
-      };
-      
-      img.src = layer.imageUrl;
-    });
+    img.onload = () => {
+      if (mounted) {
+        setImageLoaded(true);
+      }
+    };
+    
+    img.onerror = (err) => {
+      console.error(`Failed to load image for layer ${zIndex}:`, imageUrl, err);
+      if (mounted) setImageLoaded(true);
+    };
+    
+    img.src = imageUrl;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     return () => {
-      texturesRef.current.forEach(texture => {
-        if (texture) texture.dispose();
-      });
+      mounted = false;
+
+
     };
-  }, [layers]);
+  }, [imageUrl, zIndex]);
 
   // Mouse movement tracking
   const handleMouseMove = useCallback((e) => {
-    if (!isDesktopRef.current) return;
+    if (!isDesktopRef.current || !materialRef.current) return;
 
     if (!lastMousePositionRef.current.x && !lastMousePositionRef.current.y) {
       lastMousePositionRef.current = { x: e.clientX, y: e.clientY };
@@ -84,24 +98,29 @@ const LayeredDistortion = ({ layers = [] }) => {
   }, []);
 
   const handleHoverStart = useCallback(() => {
+    if (!materialRef.current) return;
     hoverActiveRef.current = true;
   }, []);
 
   const handleHoverEnd = useCallback(() => {
+    if (!materialRef.current) return;
     hoverActiveRef.current = false;
   }, []);
 
   // Animation loop
   const animate = useCallback(() => {
-    if (!rendererRef.current || !sceneRef.current || !cameraRef.current) {
+    if (!materialRef.current) {
       frameRef.current = requestAnimationFrame(animate);
       return;
     }
 
     timeRef.current += 0.016;
 
-    // Update mouse movement decay
+    // Update uniforms based on interaction
+    const baseVolatility = Math.sin(timeRef.current * 0.3) * 0.1 + volatility;
+    
     if (isDesktopRef.current) {
+      // Mouse movement decay
       if (mouseActiveRef.current) {
         mouseMovementRef.current *= 0.92;
         if (mouseMovementRef.current < 0.05) {
@@ -109,165 +128,203 @@ const LayeredDistortion = ({ layers = [] }) => {
           mouseActiveRef.current = false;
         }
       }
+
+      const mouseBoost = mouseMovementRef.current * mouseMovementMultiplier;
+      materialRef.current.uniforms.uVolatility.value = baseVolatility + mouseBoost;
+      materialRef.current.uniforms.uSpeed.value = speed + mouseBoost * 0.2;
+      materialRef.current.uniforms.uHoverMultiplier.value = 1.0;
+      materialRef.current.uniforms.uMouseBoost.value = mouseBoost;
+    } else {
+      // Mobile hover
+      const currentMultiplier = hoverActiveRef.current ? hoverMultiplier : 1;
+      materialRef.current.uniforms.uVolatility.value = baseVolatility;
+      materialRef.current.uniforms.uSpeed.value = speed * (hoverActiveRef.current ? 1.2 : 1);
+      materialRef.current.uniforms.uHoverMultiplier.value = currentMultiplier;
+      materialRef.current.uniforms.uMouseBoost.value = 0;
     }
 
-    // Update uniforms for all meshes
-    meshesRef.current.forEach((mesh, idx) => {
-      const layer = layers[idx];
-      if (!mesh.material || !layer) return;
+    materialRef.current.uniforms.uTime.value = timeRef.current;
 
-      const baseVolatility = Math.sin(timeRef.current * 0.3) * 0.1 + layer.volatility;
-      
-      if (isDesktopRef.current) {
-        const mouseBoost = mouseMovementRef.current * layer.mouseMovementMultiplier;
-        mesh.material.uniforms.uVolatility.value = baseVolatility + mouseBoost;
-        mesh.material.uniforms.uSpeed.value = layer.speed + mouseBoost * 0.2;
-        mesh.material.uniforms.uHoverMultiplier.value = 1.0;
-        mesh.material.uniforms.uMouseBoost.value = mouseBoost;
-      } else {
-        const currentMultiplier = hoverActiveRef.current ? (layer.hoverMultiplier || 1.2) : 1;
-        mesh.material.uniforms.uVolatility.value = baseVolatility;
-        mesh.material.uniforms.uSpeed.value = layer.speed * (hoverActiveRef.current ? 1.2 : 1);
-        mesh.material.uniforms.uHoverMultiplier.value = currentMultiplier;
-        mesh.material.uniforms.uMouseBoost.value = 0;
-      }
 
-      mesh.material.uniforms.uTime.value = timeRef.current;
-    });
 
-    rendererRef.current.render(sceneRef.current, cameraRef.current);
+
+    if (rendererRef.current && sceneRef.current && cameraRef.current) {
+      rendererRef.current.render(sceneRef.current, cameraRef.current);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     frameRef.current = requestAnimationFrame(animate);
-  }, [layers]);
+  }, [speed, volatility, mouseMovementMultiplier, hoverMultiplier]);
 
-  // Initialize Three.js single renderer
+  // Initialize Three.js
   useEffect(() => {
-    if (!containerRef.current || !allImagesLoaded) return;
+    if (!containerRef.current || !imageLoaded) return;
 
     let mounted = true;
-    let geometries = [];
+    let geometry, material, renderer;
 
-    try {
-      // Create single renderer
-      const renderer = new THREE.WebGLRenderer({ 
-        alpha: true, 
-        antialias: true,
-        powerPreference: "high-performance"
-      });
-      
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      renderer.setPixelRatio(dpr);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x000000, 0); // Transparent
-      rendererRef.current = renderer;
-      
-      containerRef.current.innerHTML = '';
-      containerRef.current.appendChild(renderer.domElement);
+    const initThree = () => {
+      try {
+        // Load texture from image
+        const img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.onload = () => {
+          if (!mounted) return;
+          
+          const texture = new THREE.Texture(img);
+          texture.minFilter = THREE.LinearFilter;
+          texture.magFilter = THREE.LinearFilter;
+          texture.needsUpdate = true;
+          textureRef.current = texture;
 
-      // Create single scene and camera
-      const scene = new THREE.Scene();
-      sceneRef.current = scene;
+          // Setup scene
+          const scene = new THREE.Scene();
+          sceneRef.current = scene;
 
-      const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 10);
-      camera.position.z = 1;
-      cameraRef.current = camera;
+          const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 10);
+          camera.position.z = 1;
+          cameraRef.current = camera;
 
-      // Create meshes for each layer
-      const meshes = [];
-      
-      layers.forEach((layer, index) => {
-        const texture = texturesRef.current[index];
-        if (!texture) return;
+          renderer = new THREE.WebGLRenderer({ 
+            alpha: true, 
+            antialias: true,
+            powerPreference: "high-performance"
+          });
+          
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          renderer.setPixelRatio(dpr);
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setClearColor(0x000000, 0); // Transparent
+          rendererRef.current = renderer;
+          
+          containerRef.current.innerHTML = '';
+          containerRef.current.appendChild(renderer.domElement);
 
-        // Create shader material for this layer
-        const material = new THREE.ShaderMaterial({
-          transparent: true,
-          uniforms: {
-            uTime: { value: 0 },
-            uSpeed: { value: layer.speed },
-            uVolatility: { value: layer.volatility },
-            uHoverMultiplier: { value: 1.0 },
-            uMouseBoost: { value: 0.0 },
-            uTexture: { value: texture },
-            uOpacity: { value: layer.opacity || 1 },
-            uColorTint: { value: new THREE.Color(layer.colorTint || '#ffffff') }
-          },
-          vertexShader: `
-            varying vec2 vUv;
-            void main() {
-              vUv = uv;
-              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-            }
-          `,
-          fragmentShader: `
-            varying vec2 vUv;
-            uniform sampler2D uTexture;
-            uniform float uTime;
-            uniform float uSpeed;
-            uniform float uVolatility;
-            uniform float uHoverMultiplier;
-            uniform float uMouseBoost;
-            uniform float uOpacity;
-            uniform vec3 uColorTint;
+          // Shader material
+          material = new THREE.ShaderMaterial({
+            transparent: true,
+            uniforms: {
+              uTime: { value: 0 },
+              uSpeed: { value: speed },
+              uVolatility: { value: volatility },
+              uHoverMultiplier: { value: 1.0 },
+              uMouseBoost: { value: 0.0 },
+              uTexture: { value: texture },
+              uOpacity: { value: opacity },
+              uColorTint: { value: new THREE.Color(colorTint) }
+            },
+            vertexShader: `
+              varying vec2 vUv;
+              void main() {
+                vUv = uv;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+              }
+            `,
+            fragmentShader: `
+              varying vec2 vUv;
+              uniform sampler2D uTexture;
+              uniform float uTime;
+              uniform float uSpeed;
+              uniform float uVolatility;
+              uniform float uHoverMultiplier;
+              uniform float uMouseBoost;
+              uniform float uOpacity;
+              uniform vec3 uColorTint;
 
-            void main() {
-              vec2 uv = vUv;
-              
-              // Distortion waves
-              float waveX = sin(uv.y * 12.0 + uTime * uSpeed) * uVolatility;
-              float waveY = sin(uv.x * 10.0 + uTime * uSpeed * 1.3) * uVolatility;
-              float waveX2 = sin(uv.y * 25.0 - uTime * uSpeed * 1.8) * uVolatility * 0.5;
-              float waveY2 = cos(uv.x * 20.0 + uTime * uSpeed * 1.5) * uVolatility * 0.5;
-              
-              // Interactive effects
-              waveX *= uHoverMultiplier;
-              waveY *= uHoverMultiplier;
-              
-              // Mouse movement boost
-              float mouseEffect = sin(uv.x * 20.0 + uTime * uSpeed * 2.5) * uMouseBoost * 0.4;
-              waveX += mouseEffect + waveX2;
-              waveY += mouseEffect + waveY2;
-              
-              uv.x += waveX * 0.03;
-              uv.y += waveY * 0.03;
-              
-              vec4 color = texture2D(uTexture, uv);
-              color.rgb *= uColorTint;
-              color.a *= uOpacity;
-              
-              if (color.a < 0.01) discard;
-              gl_FragColor = color;
-            }
-          `
-        });
+              void main() {
+                vec2 uv = vUv;
+                
+                // Distortion waves
+                float waveX = sin(uv.y * 12.0 + uTime * uSpeed) * uVolatility;
+                float waveY = sin(uv.x * 10.0 + uTime * uSpeed * 1.3) * uVolatility;
+                float waveX2 = sin(uv.y * 25.0 - uTime * uSpeed * 1.8) * uVolatility * 0.5;
+                float waveY2 = cos(uv.x * 20.0 + uTime * uSpeed * 1.5) * uVolatility * 0.5;
+                
+                // Interactive effects
+                waveX *= uHoverMultiplier;
+                waveY *= uHoverMultiplier;
+                
+                // Mouse movement boost
+                float mouseEffect = sin(uv.x * 20.0 + uTime * uSpeed * 2.5) * uMouseBoost * 0.4;
+                waveX += mouseEffect + waveX2;
+                waveY += mouseEffect + waveY2;
+                
+                uv.x += waveX * 0.03;
+                uv.y += waveY * 0.03;
+                
+                vec4 color = texture2D(uTexture, uv);
+                color.rgb *= uColorTint;
+                color.a *= uOpacity;
+                
+                if (color.a < 0.01) discard;
+                gl_FragColor = color;
+              }
+            `
+          });
 
-        // Create geometry (reuse same geometry for all layers)
-        const geometry = new THREE.PlaneGeometry(2, 2, 128, 128);
-        geometries.push(geometry);
+          materialRef.current = material;
+
+          geometry = new THREE.PlaneGeometry(2, 2, 128, 128);
+          const mesh = new THREE.Mesh(geometry, material);
+          mesh.position.z = zIndex * 0.01; // Slight depth between layers
+          meshRef.current = mesh;
+          scene.add(mesh);
+
+          // Event listeners
+          if (isDesktopRef.current) {
+            window.addEventListener("mousemove", handleMouseMove);
+          } else {
+            containerRef.current.addEventListener("mouseenter", handleHoverStart);
+            containerRef.current.addEventListener("mouseleave", handleHoverEnd);
+            containerRef.current.addEventListener("touchstart", handleHoverStart);
+            containerRef.current.addEventListener("touchend", handleHoverEnd);
+          }
+
+          // Start animation
+          frameRef.current = requestAnimationFrame(animate);
+        };
         
-        const mesh = new THREE.Mesh(geometry, material);
-        mesh.position.z = (layer.zIndex !== undefined ? layer.zIndex : index) * 0.01;
-        scene.add(mesh);
-        meshes.push(mesh);
-      });
-      
-      meshesRef.current = meshes;
+        img.src = imageUrl;
+      } catch (error) {
+        console.error(`Three.js error for layer ${zIndex}:`, error);
 
-      // Event listeners
-      if (isDesktopRef.current) {
-        window.addEventListener("mousemove", handleMouseMove);
-      } else {
-        containerRef.current.addEventListener("mouseenter", handleHoverStart);
-        containerRef.current.addEventListener("mouseleave", handleHoverEnd);
-        containerRef.current.addEventListener("touchstart", handleHoverStart);
-        containerRef.current.addEventListener("touchend", handleHoverEnd);
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
+    };
 
-      // Start animation
-      frameRef.current = requestAnimationFrame(animate);
+    initThree();
 
-    } catch (error) {
-      console.error("Three.js initialization error:", error);
-    }
+
+
+
+
 
     const handleResize = () => {
       const width = window.innerWidth;
@@ -292,29 +349,29 @@ const LayeredDistortion = ({ layers = [] }) => {
       if (containerRef.current) {
         containerRef.current.removeEventListener("mouseenter", handleHoverStart);
         containerRef.current.removeEventListener("mouseleave", handleHoverEnd);
-        containerRef.current.removeEventListener("touchstart", handleHoverStart);
-        containerRef.current.removeEventListener("touchend", handleHoverEnd);
+
+
       }
       window.removeEventListener("resize", handleResize);
       
-      // Clean up geometries
-      geometries.forEach(geometry => {
-        if (geometry) geometry.dispose();
-      });
-      
-      // Clean up materials
-      meshesRef.current.forEach(mesh => {
-        if (mesh.material) mesh.material.dispose();
-      });
-      
-      if (rendererRef.current) {
-        rendererRef.current.dispose();
-        if (rendererRef.current.domElement) {
-          rendererRef.current.domElement.remove();
-        }
-      }
+      if (geometry) geometry.dispose();
+      if (material) material.dispose();
+      if (textureRef.current) textureRef.current.dispose();
+      if (renderer) renderer.dispose();
+
+
+
+
+
+
+
+
+
+
+
+
     };
-  }, [allImagesLoaded, layers, handleMouseMove, handleHoverStart, handleHoverEnd, animate]);
+  }, [imageLoaded, imageUrl, speed, volatility, mouseMovementMultiplier, hoverMultiplier, colorTint, opacity, zIndex, handleMouseMove, handleHoverStart, handleHoverEnd, animate]);
 
   return (
     <div
@@ -326,9 +383,65 @@ const LayeredDistortion = ({ layers = [] }) => {
         width: "100%",
         height: "100%",
         pointerEvents: "none",
-        zIndex: 0,
+        zIndex: zIndex,
+        opacity: imageLoaded ? 1 : 0,
+        transition: "opacity 0.5s ease-out"
       }}
     />
+  );
+};
+
+// Main component with 3 layers
+const LayeredDistortion = ({
+  layers = [
+    {
+      imageUrl: "/images/layer1-background.png",
+      speed: 0.3,
+      volatility: 0.15,
+      mouseMovementMultiplier: 0.005,
+      hoverMultiplier: 1.1,
+      colorTint: "#ffffff",
+      opacity: 0.8,
+      zIndex: 0
+    },
+    {
+      imageUrl: "/images/layer2-mid.png",
+      speed: 0.6,
+      volatility: 0.25,
+      mouseMovementMultiplier: 0.015,
+      hoverMultiplier: 1.3,
+      colorTint: "#ffffff",
+      opacity: 0.9,
+      zIndex: 1
+    },
+    {
+      imageUrl: "/images/layer3-foreground.png",
+      speed: 1.0,
+      volatility: 0.35,
+      mouseMovementMultiplier: 0.03,
+      hoverMultiplier: 1.6,
+      colorTint: "#ffffff",
+      opacity: 1,
+      zIndex: 2
+    }
+  ]
+}) => {
+  return (
+    <div style={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
+      {layers.map((layer, index) => (
+        <DistortionLayer
+          key={index}
+          imageUrl={layer.imageUrl}
+          speed={layer.speed}
+          volatility={layer.volatility}
+          mouseMovementMultiplier={layer.mouseMovementMultiplier}
+          hoverMultiplier={layer.hoverMultiplier}
+          colorTint={layer.colorTint}
+          opacity={layer.opacity}
+          zIndex={layer.zIndex || index}
+        />
+      ))}
+    </div>
   );
 };
 
