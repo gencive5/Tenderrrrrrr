@@ -144,7 +144,7 @@ const LayeredDistortion = ({ layers = [] }) => {
     if (!containerRef.current || !allImagesLoaded) return;
 
     let mounted = true;
-    const geometries = [];
+    let geometries = [];
 
     try {
       // Create single renderer
@@ -158,7 +158,6 @@ const LayeredDistortion = ({ layers = [] }) => {
       renderer.setPixelRatio(dpr);
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setClearColor(0x000000, 0); // Transparent
-      renderer.sortObjects = true; // Ensure objects sort by z-index
       rendererRef.current = renderer;
       
       containerRef.current.innerHTML = '';
@@ -172,26 +171,16 @@ const LayeredDistortion = ({ layers = [] }) => {
       camera.position.z = 1;
       cameraRef.current = camera;
 
-      // Create meshes for each layer - sort by zIndex before creating
-      const sortedLayers = [...layers].sort((a, b) => {
-        const zA = a.zIndex !== undefined ? a.zIndex : 0;
-        const zB = b.zIndex !== undefined ? b.zIndex : 0;
-        return zA - zB; // Lower zIndex first (background)
-      });
-      
+      // Create meshes for each layer
       const meshes = [];
       
-      sortedLayers.forEach((layer, sortedIndex) => {
-        // Find original index for texture lookup
-        const originalIndex = layers.findIndex(l => l === layer);
-        const texture = texturesRef.current[originalIndex];
+      layers.forEach((layer, index) => {
+        const texture = texturesRef.current[index];
         if (!texture) return;
 
         // Create shader material for this layer
         const material = new THREE.ShaderMaterial({
           transparent: true,
-          depthWrite: false, // Allow transparency blending
-          depthTest: true,
           uniforms: {
             uTime: { value: 0 },
             uSpeed: { value: layer.speed },
@@ -256,8 +245,7 @@ const LayeredDistortion = ({ layers = [] }) => {
         geometries.push(geometry);
         
         const mesh = new THREE.Mesh(geometry, material);
-        // Position based on sorted index to ensure proper layering
-        mesh.position.z = sortedIndex * 0.01;
+        mesh.position.z = (layer.zIndex !== undefined ? layer.zIndex : index) * 0.01;
         scene.add(mesh);
         meshes.push(mesh);
       });
