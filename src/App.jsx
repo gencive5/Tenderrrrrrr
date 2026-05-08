@@ -42,22 +42,22 @@ function App() {
               opacity: 0.9, 
               zIndex: 0
             },
-            // {
-            //   imageUrl: layer2,
-            //   speed: 0.6,
-            //   volatility: 0.25,
-            //   mouseMovementMultiplier: 0.015,
-            //   opacity: 0.9,
-            //   zIndex: 1
-            // },
-            // {
-            //   imageUrl: layer3,
-            //   speed: 1.0,
-            //   volatility: 0.35,
-            //   mouseMovementMultiplier: 0.03,
-            //   opacity: 0.9,
-            //   zIndex: 2
-            // }
+            {
+              imageUrl: layer2,
+              speed: 0.6,
+              volatility: 0.25,
+              mouseMovementMultiplier: 0.015,
+              opacity: 0.9,
+              zIndex: 1
+            },
+            {
+              imageUrl: layer3,
+              speed: 1.0,
+              volatility: 0.35,
+              mouseMovementMultiplier: 0.03,
+              opacity: 0.9,
+              zIndex: 2
+            }
           ]}
         />
       </div>
