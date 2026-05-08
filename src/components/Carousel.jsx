@@ -17,7 +17,6 @@ import plant from '../assets/images/plant.webp';
 import chico from '../assets/images/chico.webp';
 import playboy from '../assets/images/playboy.webp';
 import soap from '../assets/images/soap.webp';
-import max from '../assets/images/stanleymax.webp';
 import sun from '../assets/images/sun.webp';
 import woman from '../assets/images/woman.webp';
 import gel from '../assets/images/gel.webp';
@@ -108,7 +107,6 @@ import nevermind from '../assets/images/nevermind.webp';
 import magnets from '../assets/images/magnets.webp';
 import megot from '../assets/images/megot.webp';
 import mcqueen from '../assets/images/mcqueen.webp';
-import menage from '../assets/images/menage.webp';
 import moto from '../assets/images/moto.webp';
 import lustre from '../assets/images/lustre.webp';
 import lavaverte from '../assets/images/lavaverte.webp';
@@ -139,7 +137,6 @@ import bettina from '../assets/images/bettina.webp';
 import usb from '../assets/images/usb.webp';
 import vodka from '../assets/images/vodka.webp';
 import aniosafe from '../assets/images/aniosafe.webp';
-import vespa from '../assets/images/vespa.webp';
 import voiture from '../assets/images/voiture.webp';
 import burger from '../assets/images/burger.webp';
 import ananas from '../assets/images/ananas.webp';
@@ -167,7 +164,6 @@ import monstrecookie from '../assets/images/monstrecookie.webp';
 import neo from '../assets/images/neo.webp';
 import pancakes from '../assets/images/pancakes.webp';
 import plateau from '../assets/images/plateau.webp';
-import poireau from '../assets/images/poireau.webp';
 import pommedepin from '../assets/images/pommedepin.webp';
 import pommes from '../assets/images/pommes.webp';
 import radiateur from '../assets/images/radiateur.webp';
@@ -199,7 +195,7 @@ const Carousel = forwardRef((props, ref) => {
 
   const imageArray = [
     gel, couple, flower, fragile, framboise, hair, handi, hotdog,
-    petitpois, soap, mop, manipuladora, sun, max, woman, playboy,
+    petitpois, soap, mop, manipuladora, sun, woman, playboy,
     stanley, plant, chico, paris, soup, shoes, signal,
     local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats,
@@ -209,12 +205,12 @@ const Carousel = forwardRef((props, ref) => {
     jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
     truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina, tartepommes,
     singe, salade, sink, relax2, robot, plage, rainbow, plaque, poubelle2, parebrise, passoire, 
-    nutriscore, nevermind, magnets, megot, mcqueen, menage, moto, lustre, lavaverte, lavarouge, jelly, kaki,
+    nutriscore, nevermind, magnets, megot, mcqueen, moto, lustre, lavaverte, lavarouge, jelly, kaki,
     jackdaniels, grabuge, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
     dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
-    usb, vodka, aniosafe, vespa, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
+    usb, vodka, aniosafe, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
     cookie2, coupant, croissant, fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
-    icecreamtruck, jaune, mariage, monstrecookie, neo, pancakes, plateau, poireau, pommedepin, pommes,
+    icecreamtruck, jaune, mariage, monstrecookie, neo, pancakes, plateau, pommedepin, pommes,
     radiateur, rosiers, sacpoubelle, siempre, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
     velo, verre, voitures
   ];
