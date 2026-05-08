@@ -144,7 +144,49 @@ import aniosafe from '../assets/images/aniosafe.webp';
 import vespa from '../assets/images/vespa.webp';
 import voiture from '../assets/images/voiture.webp';
 import burger from '../assets/images/burger.webp';
-
+import ananas from '../assets/images/ananas.webp';
+import basque from '../assets/images/basque.webp';
+import biscuits from '../assets/images/biscuits.webp';
+import brule from '../assets/images/brule.webp';
+import camera from '../assets/images/camera.webp';
+import chaine from '../assets/images/chaine.webp';
+import ciseaux from '../assets/images/ciseaux.webp';
+import coeur from '../assets/images/coeur.webp';
+import cookie2 from '../assets/images/cookie2.webp';
+import coupant from '../assets/images/coupant.webp';
+import croissant from '../assets/images/croissant.webp';
+import fantomes from '../assets/images/fantomes.webp';
+import fauteuilnoir from '../assets/images/fauteuilnoir.webp';
+import fauteuilsrouges from '../assets/images/fauteuilsrouges.webp';
+import fruity from '../assets/images/fruity.webp';
+import groupe from '../assets/images/groupe.webp';
+import guyhoquet from '../assets/images/guyhoquet.webp';
+import hortensia from '../assets/images/hortensia.webp';
+import icecreamtruck from '../assets/images/icecreamtruck.webp';
+import jaune from '../assets/images/jaune.webp';
+import localpote from '../assets/images/localpote.webp';
+import mariage from '../assets/images/mariage.webp';
+import monstrecookie from '../assets/images/monstrecookie.webp';
+import neo from '../assets/images/neo.webp';
+import pancakes from '../assets/images/pancakes.webp';
+import plateau from '../assets/images/plateau.webp';
+import poireau from '../assets/images/poireau.webp';
+import pommedepin from '../assets/images/pommedepin.webp';
+import pommes from '../assets/images/pommes.webp';
+import radiateur from '../assets/images/radiateur.webp';
+import rosiers from '../assets/images/rosiers.webp';
+import sacpoubelle from '../assets/images/sacpoubelle.webp';
+import siempre from '../assets/images/siempre.webp';
+import tablevoile from '../assets/images/tablevoile.webp';
+import tigres from '../assets/images/tigres.webp';
+import tortue from '../assets/images/tortue.webp';
+import tournesol from '../assets/images/tournesol.webp';
+import tranche from '../assets/images/tranche.webp';
+import tube2 from '../assets/images/tube2.webp';
+import vanille from '../assets/images/vanille.webp';
+import velo from '../assets/images/velo.webp';
+import verre from '../assets/images/verre.webp';
+import voitures from '../assets/images/voitures.webp';
 
 const Carousel = forwardRef((props, ref) => {
   const [dragStartX, setDragStartX] = useState(0);
@@ -173,7 +215,11 @@ const Carousel = forwardRef((props, ref) => {
     nutriscore, nevermind, magnets, megot, mcqueen, menage, moto, lustre, lavaverte, lavarouge, jelly, kaki,
     jackdaniels, grabuge, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
     dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
-    usb, vodka, aniosafe, vespa, voiture
+    usb, vodka, aniosafe, vespa, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
+    cookie2, coupant, croissant, fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
+    icecreamtruck, jaune, localpote, mariage, monstrecookie, neo, pancakes, plateau, poireau, pommedepin, pommes,
+    radiateur, rosiers, sacpoubelle, siempre, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
+    velo, verre, voitures
   ];
 
   function shuffleArray(array) {
