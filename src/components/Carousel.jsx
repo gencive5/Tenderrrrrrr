@@ -25,7 +25,6 @@ import gel from '../assets/images/gel.webp';
 import soup from '../assets/images/soup.webp';
 import shoes from '../assets/images/shoes.webp';
 import signal from '../assets/images/signal.webp';
-import rip from '../assets/images/rip.webp';
 import local from '../assets/images/local.webp';
 import chair from '../assets/images/chair.webp';
 import tube from '../assets/images/tube.webp';
@@ -66,7 +65,6 @@ import oranges from '../assets/images/oranges.webp';
 import orb from '../assets/images/orb.webp';
 import salsa from '../assets/images/salsa.webp';
 import seau from '../assets/images/seau.webp';
-import stone from '../assets/images/stone.webp';
 import tpe from '../assets/images/tpe.webp';
 import girl from '../assets/images/girl.webp';
 import stanley from '../assets/images/stanleymax.webp';
@@ -78,7 +76,6 @@ import girlstop from '../assets/images/girlstop.webp';
 import ice from '../assets/images/ice.webp';
 import jellyblue from '../assets/images/jellyblue.webp';
 import jellypink from '../assets/images/jellypink.webp';
-import lavablue from '../assets/images/lavablue.webp';
 import leopard from '../assets/images/leopard.webp';
 import lush from '../assets/images/lush.webp';
 import pearls from '../assets/images/pearls.webp';
@@ -93,7 +90,60 @@ import pantoufles from '../assets/images/pantoufles.webp';
 import kim from '../assets/images/kim.webp';
 import lundi from '../assets/images/lundi.webp';
 import crakeo from '../assets/images/crakeo.webp';
-
+import spongedaddy from '../assets/images/spongedaddy.webp';
+import sport from '../assets/images/sport.webp';
+import tortina from '../assets/images/tortina.webp';
+import tartepommes from '../assets/images/tartepommes.webp';
+import singe from '../assets/images/singe.webp';
+import salade from '../assets/images/salade.webp';
+import sink from '../assets/images/sink.webp';
+import relax2 from '../assets/images/relax2.webp';
+import robot from '../assets/images/robot.webp';
+import plage from '../assets/images/plage.webp';
+import rainbow from '../assets/images/rainbow.webp';
+import plaque from '../assets/images/plaque.webp';
+import poubelle2 from '../assets/images/poubelle2.webp';
+import parebrise from '../assets/images/parebrise.webp';
+import passoire from '../assets/images/passoire.webp';
+import nutriscore from '../assets/images/nutriscore.webp';
+import nevermind from '../assets/images/nevermind.webp';
+import magnets from '../assets/images/magnets.webp';
+import megot from '../assets/images/megot.webp';
+import mcqueen from '../assets/images/mcqueen.webp';
+import menage from '../assets/images/menage.webp';
+import moto from '../assets/images/moto.webp';
+import lustre from '../assets/images/lustre.webp';
+import lavaverte from '../assets/images/lavaverte.webp';
+import lavarouge from '../assets/images/lavarouge.webp';
+import jelly from '../assets/images/jelly.webp';
+import kaki from '../assets/images/kaki.webp';
+import jackdaniels from '../assets/images/jackdaniels.webp';
+import grabuge from '../assets/images/grabuge.webp';
+import gratis from '../assets/images/gratis.webp';
+import girlboss from '../assets/images/girlboss.webp';
+import fashion from '../assets/images/fashion.webp';
+import fraiche from '../assets/images/fraiche.webp';
+import faucet from '../assets/images/faucet.webp';
+import fraise2 from '../assets/images/fraise2.webp';
+import flixbus from '../assets/images/flixbus.webp';
+import fall2 from '../assets/images/fall2.webp';
+import evian from '../assets/images/evian.webp';
+import dyson from '../assets/images/dyson.webp';
+import enchufe from '../assets/images/enchufe.webp';
+import cookies from '../assets/images/cookies.webp';
+import chose from '../assets/images/chose.webp';
+import coneclou from '../assets/images/coneclou.webp';
+import candyup from '../assets/images/candyup.webp';
+import chocolatona from '../assets/images/chocolatona.webp';
+import chaussure from '../assets/images/chaussure.webp';
+import bibimmyeon from '../assets/images/bibimmyeon.webp';
+import bettina from '../assets/images/bettina.webp';
+import usb from '../assets/images/usb.webp';
+import vodka from '../assets/images/vodka.webp';
+import aniosafe from '../assets/images/aniosafe.webp';
+import vespa from '../assets/images/vespa.webp';
+import voiture from '../assets/images/voiture.webp';
+import burger from '../assets/images/burger.webp';
 
 
 const Carousel = forwardRef((props, ref) => {
@@ -112,13 +162,18 @@ const Carousel = forwardRef((props, ref) => {
     gel, couple, flower, fragile, framboise, hair, handi, hotdog,
     petitpois, soap, cig, mop, manipuladora, sun, max, woman, playboy,
     stanley, plant, chico, paris, soup, shoes, signal,
-    rip, local, chair, tube, sunset, spider, savon, purple, melon,
+    local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats,
     eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
     orange, guy, cone, aceite, cables, carrots, chairs, fraise, papier, lime, oranges,
-    orb, salsa, seau, stone, tpe, girl, brain, danette, diesel, girlstop, fall, ice,
-    jellyblue, jellypink, lavablue, leopard, lush, pearls, pole, rolex, tin, spray, trays,
-    truck, tapis, pantoufles, crakeo, lundi, kim,
+    orb, salsa, seau, tpe, girl, brain, danette, diesel, girlstop, fall, ice,
+    jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
+    truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina, tartepommes,
+    singe, salade, sink, relax2, robot, plage, rainbow, plaque, poubelle2, parebrise, passoire, 
+    nutriscore, nevermind, magnets, megot, mcqueen, menage, moto, lustre, lavaverte, lavarouge, jelly, kaki,
+    jackdaniels, grabuge, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
+    dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
+    usb, vodka, aniosafe, vespa, voiture
   ];
 
   function shuffleArray(array) {
