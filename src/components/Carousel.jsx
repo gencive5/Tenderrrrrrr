@@ -161,7 +161,6 @@ import monstrecookie from '../assets/images/monstrecookie.webp';
 import neo from '../assets/images/neo.webp';
 import pancakes from '../assets/images/pancakes.webp';
 import plateau from '../assets/images/plateau.webp';
-import pommedepin from '../assets/images/pommedepin.webp';
 import pommes from '../assets/images/pommes.webp';
 import radiateur from '../assets/images/radiateur.webp';
 import rosiers from '../assets/images/rosiers.webp';
@@ -214,7 +213,7 @@ const Carousel = forwardRef((props, ref) => {
     usb, vodka, aniosafe, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
     cookie2, coupant, 
     fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
-    icecreamtruck, jaune, monstrecookie, neo, pancakes, plateau, pommedepin, pommes,
+    icecreamtruck, jaune, monstrecookie, neo, pancakes, plateau, pommes,
     radiateur, rosiers, sacpoubelle, siempre, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
     velo, verre, voitures
   ];
