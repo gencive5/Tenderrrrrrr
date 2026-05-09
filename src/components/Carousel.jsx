@@ -113,7 +113,6 @@ import lavarouge from '../assets/images/lavarouge.webp';
 import jelly from '../assets/images/jelly.webp';
 import kaki from '../assets/images/kaki.webp';
 import jackdaniels from '../assets/images/jackdaniels.webp';
-import grabuge from '../assets/images/grabuge.webp';
 import gratis from '../assets/images/gratis.webp';
 import girlboss from '../assets/images/girlboss.webp';
 import fashion from '../assets/images/fashion.webp';
@@ -158,7 +157,6 @@ import hortensia from '../assets/images/hortensia.webp';
 import icecreamtruck from '../assets/images/icecreamtruck.webp';
 import jaune from '../assets/images/jaune.webp';
 import monstrecookie from '../assets/images/monstrecookie.webp';
-import neo from '../assets/images/neo.webp';
 import pancakes from '../assets/images/pancakes.webp';
 import plateau from '../assets/images/plateau.webp';
 import pommes from '../assets/images/pommes.webp';
@@ -176,6 +174,8 @@ import vanille from '../assets/images/vanille.webp';
 import velo from '../assets/images/velo.webp';
 import verre from '../assets/images/verre.webp';
 import voitures from '../assets/images/voitures.webp';
+import matelas from '../assets/images/matelas.webp';
+import tubesverts from '../assets/images/tubesverts.webp';
 
 const Carousel = forwardRef((props, ref) => {
   const [dragStartX, setDragStartX] = useState(0);
@@ -208,14 +208,14 @@ const Carousel = forwardRef((props, ref) => {
     truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina, tartepommes,
     singe, salade, sink, relax2, robot, plage, rainbow, plaque, poubelle2, parebrise, passoire, 
     nutriscore, nevermind, magnets, megot, mcqueen, moto, lustre, lavaverte, lavarouge, jelly, kaki,
-    jackdaniels, grabuge, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
+    jackdaniels, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
     dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
     usb, vodka, aniosafe, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
     cookie2, coupant, 
     fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
-    icecreamtruck, jaune, monstrecookie, neo, pancakes, plateau, pommes,
+    icecreamtruck, jaune, monstrecookie, pancakes, plateau, pommes,
     radiateur, rosiers, sacpoubelle, siempre, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
-    velo, verre, voitures
+    velo, verre, voitures, matelas, tubesverts
   ];
 
   // Filter out any undefined or null images
