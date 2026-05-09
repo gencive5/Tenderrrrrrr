@@ -99,7 +99,6 @@ import plage from '../assets/images/plage.webp';
 import rainbow from '../assets/images/rainbow.webp';
 import plaque from '../assets/images/plaque.webp';
 import poubelle2 from '../assets/images/poubelle2.webp';
-import parebrise from '../assets/images/parebrise.webp';
 import passoire from '../assets/images/passoire.webp';
 import nutriscore from '../assets/images/nutriscore.webp';
 import nevermind from '../assets/images/nevermind.webp';
@@ -163,7 +162,6 @@ import pommes from '../assets/images/pommes.webp';
 import radiateur from '../assets/images/radiateur.webp';
 import rosiers from '../assets/images/rosiers.webp';
 import sacpoubelle from '../assets/images/sacpoubelle.webp';
-import siempre from '../assets/images/siempre.webp';
 import tablevoile from '../assets/images/tablevoile.webp';
 import tigres from '../assets/images/tigres.webp';
 import tortue from '../assets/images/tortue.webp';
@@ -173,7 +171,6 @@ import tube2 from '../assets/images/tube2.webp';
 import vanille from '../assets/images/vanille.webp';
 import velo from '../assets/images/velo.webp';
 import verre from '../assets/images/verre.webp';
-import voitures from '../assets/images/voitures.webp';
 import matelas from '../assets/images/matelas.webp';
 import tubesverts from '../assets/images/tubesverts.webp';
 
@@ -206,7 +203,7 @@ const Carousel = forwardRef((props, ref) => {
     orb, salsa, seau, tpe, girl, brain, danette, diesel, girlstop, fall, ice,
     jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
     truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina, tartepommes,
-    singe, salade, sink, relax2, robot, plage, rainbow, plaque, poubelle2, parebrise, passoire, 
+    singe, salade, sink, relax2, robot, plage, rainbow, plaque, poubelle2, passoire, 
     nutriscore, nevermind, magnets, megot, mcqueen, moto, lustre, lavaverte, lavarouge, jelly, kaki,
     jackdaniels, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
     dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
@@ -214,8 +211,8 @@ const Carousel = forwardRef((props, ref) => {
     cookie2, coupant, 
     fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
     icecreamtruck, jaune, monstrecookie, pancakes, plateau, pommes,
-    radiateur, rosiers, sacpoubelle, siempre, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
-    velo, verre, voitures, matelas, tubesverts
+    radiateur, rosiers, sacpoubelle, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
+    velo, verre, matelas, tubesverts
   ];
 
   // Filter out any undefined or null images
