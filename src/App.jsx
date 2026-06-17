@@ -7,7 +7,7 @@ import NoButton from './components/No.jsx';
 import LayeredDistortion from './components/LayeredDistortion';
 
 import layer1 from './assets/layer-pink4.png';
-import layer2 from './assets/layer-red2.png';
+import layer2 from './assets/layer-red.png';
 import layer3 from './assets/layer-purple.png';
 
 function App() {
