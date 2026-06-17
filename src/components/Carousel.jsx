@@ -39,7 +39,6 @@ import relax from '../assets/images/relax.webp';
 import doliprane from '../assets/images/doliprane.webp';
 import cookie from '../assets/images/cookie.webp';
 import cats from '../assets/images/cats.webp';
-import eolienne from '../assets/images/eolienne.webp';
 import ex from '../assets/images/ex.webp';
 import ghost from '../assets/images/ghost.webp';
 import mommy from '../assets/images/mommy.webp';
@@ -89,9 +88,7 @@ import crakeo from '../assets/images/crakeo.webp';
 import spongedaddy from '../assets/images/spongedaddy.webp';
 import sport from '../assets/images/sport.webp';
 import tortina from '../assets/images/tortina.webp';
-import tartepommes from '../assets/images/tartepommes.webp';
 import singe from '../assets/images/singe.webp';
-import salade from '../assets/images/salade.webp';
 import sink from '../assets/images/sink.webp';
 import relax2 from '../assets/images/relax2.webp';
 import robot from '../assets/images/robot.webp';
@@ -136,7 +133,6 @@ import vodka from '../assets/images/vodka.webp';
 import aniosafe from '../assets/images/aniosafe.webp';
 import voiture from '../assets/images/voiture.webp';
 import burger from '../assets/images/burger.webp';
-import ananas from '../assets/images/ananas.webp';
 import basque from '../assets/images/basque.webp';
 import biscuits from '../assets/images/biscuits.webp';
 import brule from '../assets/images/brule.webp';
@@ -153,24 +149,17 @@ import fruity from '../assets/images/fruity.webp';
 import groupe from '../assets/images/groupe.webp';
 import guyhoquet from '../assets/images/guyhoquet.webp';
 import hortensia from '../assets/images/hortensia.webp';
-import icecreamtruck from '../assets/images/icecreamtruck.webp';
 import jaune from '../assets/images/jaune.webp';
 import monstrecookie from '../assets/images/monstrecookie.webp';
 import pancakes from '../assets/images/pancakes.webp';
 import plateau from '../assets/images/plateau.webp';
-import pommes from '../assets/images/pommes.webp';
 import radiateur from '../assets/images/radiateur.webp';
-import rosiers from '../assets/images/rosiers.webp';
 import sacpoubelle from '../assets/images/sacpoubelle.webp';
 import tablevoile from '../assets/images/tablevoile.webp';
-import tigres from '../assets/images/tigres.webp';
 import tortue from '../assets/images/tortue.webp';
-import tournesol from '../assets/images/tournesol.webp';
-import tranche from '../assets/images/tranche.webp';
 import tube2 from '../assets/images/tube2.webp';
 import vanille from '../assets/images/vanille.webp';
 import velo from '../assets/images/velo.webp';
-import verre from '../assets/images/verre.webp';
 import matelas from '../assets/images/matelas.webp';
 import tubesverts from '../assets/images/tubesverts.webp';
 
@@ -198,21 +187,21 @@ const Carousel = forwardRef((props, ref) => {
     stanley, plant, chico, paris, soup, shoes, signal,
     local, chair, tube, sunset, spider, savon, purple, melon,
     green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats,
-    eolienne, ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
+    ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
     orange, guy, cone, cables, carrots, chairs, fraise, papier, lime, oranges,
     orb, salsa, seau, tpe, girl, brain, danette, diesel, girlstop, fall, ice,
     jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
-    truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina, tartepommes,
-    singe, salade, sink, relax2, robot, plage, rainbow, plaque, poubelle2, passoire, 
+    truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina,
+    singe, sink, relax2, robot, plage, rainbow, plaque, poubelle2, passoire, 
     nutriscore, nevermind, magnets, megot, mcqueen, moto, lustre, lavaverte, lavarouge, jelly, kaki,
     jackdaniels, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
     dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
-    usb, vodka, aniosafe, voiture, ananas, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
+    usb, vodka, aniosafe, voiture, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
     cookie2, coupant, 
     fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
-    icecreamtruck, jaune, monstrecookie, pancakes, plateau, pommes,
-    radiateur, rosiers, sacpoubelle, tablevoile, tigres, tortue, tournesol, tranche, tube2, vanille,
-    velo, verre, matelas, tubesverts
+    jaune, monstrecookie, pancakes, plateau,
+    radiateur, sacpoubelle, tablevoile, tortue, tube2, vanille,
+    velo, matelas, tubesverts
   ];
 
   // Filter out any undefined or null images
