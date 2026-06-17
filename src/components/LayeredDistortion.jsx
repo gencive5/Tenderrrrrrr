@@ -56,21 +56,7 @@ const DistortionLayer = ({
     img.src = imageUrl;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+   
     return () => {
       mounted = false;
 
@@ -151,20 +137,6 @@ const DistortionLayer = ({
     if (rendererRef.current && sceneRef.current && cameraRef.current) {
       rendererRef.current.render(sceneRef.current, cameraRef.current);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -304,25 +276,10 @@ const DistortionLayer = ({
         console.error(`Three.js error for layer ${zIndex}:`, error);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
       }
     };
 
     initThree();
-
-
-
 
 
 
@@ -361,15 +318,6 @@ const DistortionLayer = ({
 
 
 
-
-
-
-
-
-
-
-
-
     };
   }, [imageLoaded, imageUrl, speed, volatility, mouseMovementMultiplier, hoverMultiplier, colorTint, opacity, zIndex, handleMouseMove, handleHoverStart, handleHoverEnd, animate]);
 
@@ -393,38 +341,7 @@ const DistortionLayer = ({
 
 // Main component with 3 layers
 const LayeredDistortion = ({
-  layers = [
-    {
-      imageUrl: "/images/layer1-background.png",
-      speed: 0.3,
-      volatility: 0.15,
-      mouseMovementMultiplier: 0.005,
-      hoverMultiplier: 1.1,
-      colorTint: "#ffffff",
-      opacity: 0.8,
-      zIndex: 0
-    },
-    {
-      imageUrl: "/images/layer2-mid.png",
-      speed: 0.6,
-      volatility: 0.25,
-      mouseMovementMultiplier: 0.015,
-      hoverMultiplier: 1.3,
-      colorTint: "#ffffff",
-      opacity: 0.9,
-      zIndex: 1
-    },
-    {
-      imageUrl: "/images/layer3-foreground.png",
-      speed: 1.0,
-      volatility: 0.35,
-      mouseMovementMultiplier: 0.03,
-      hoverMultiplier: 1.6,
-      colorTint: "#ffffff",
-      opacity: 1,
-      zIndex: 2
-    }
-  ]
+  layers, 
 }) => {
   return (
     <div style={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>

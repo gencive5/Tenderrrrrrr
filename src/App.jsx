@@ -36,25 +36,25 @@ function App() {
           layers={[
             {
               imageUrl: layer1,
-              speed: 0.3,
+              speed: 0.1,
               volatility: 0.15,
-              mouseMovementMultiplier: 0.005,
+              mouseMovementMultiplier: 0.003,
               opacity: 0.9, 
               zIndex: 0
             },
             {
               imageUrl: layer2,
-              speed: 0.6,
+              speed: 0.2,
               volatility: 0.25,
-              mouseMovementMultiplier: 0.015,
+              mouseMovementMultiplier: 0.005,
               opacity: 0.9,
               zIndex: 1
             },
             {
               imageUrl: layer3,
-              speed: 1.0,
+              speed: 0.3,
               volatility: 0.35,
-              mouseMovementMultiplier: 0.03,
+              mouseMovementMultiplier: 0.002,
               opacity: 0.9,
               zIndex: 2
             }
