@@ -1,9 +1,7 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef, useCallback } from 'react';
 
 // Images (all your imports remain the same)
-import couple from '../assets/images/couple.webp';
 import flower from '../assets/images/flower.webp';
-import fragile from '../assets/images/fragile.webp';
 import framboise from '../assets/images/framboise.webp';
 import hair from '../assets/images/hair.webp';
 import handi from '../assets/images/handi.webp';
@@ -37,7 +35,6 @@ import amethyst from '../assets/images/amethyst.webp';
 import treize from '../assets/images/treize.webp';
 import relax from '../assets/images/relax.webp';
 import doliprane from '../assets/images/doliprane.webp';
-import cookie from '../assets/images/cookie.webp';
 import cats from '../assets/images/cats.webp';
 import ex from '../assets/images/ex.webp';
 import ghost from '../assets/images/ghost.webp';
@@ -55,7 +52,6 @@ import carrots from '../assets/images/carrots.webp';
 import chairs from '../assets/images/chairs.webp';
 import fraise from '../assets/images/fraise.webp';
 import papier from '../assets/images/papier.webp';
-import lime from '../assets/images/lime.webp';
 import oranges from '../assets/images/oranges.webp';
 import orb from '../assets/images/orb.webp';
 import salsa from '../assets/images/salsa.webp';
@@ -68,7 +64,6 @@ import danette from '../assets/images/danette.webp';
 import diesel from '../assets/images/diesel.webp';
 import fall from '../assets/images/fall.webp';
 import girlstop from '../assets/images/girlstop.webp';
-import ice from '../assets/images/ice.webp';
 import jellyblue from '../assets/images/jellyblue.webp';
 import jellypink from '../assets/images/jellypink.webp';
 import leopard from '../assets/images/leopard.webp';
@@ -93,15 +88,12 @@ import sink from '../assets/images/sink.webp';
 import relax2 from '../assets/images/relax2.webp';
 import robot from '../assets/images/robot.webp';
 import plage from '../assets/images/plage.webp';
-import rainbow from '../assets/images/rainbow.webp';
 import plaque from '../assets/images/plaque.webp';
 import poubelle2 from '../assets/images/poubelle2.webp';
-import passoire from '../assets/images/passoire.webp';
 import nutriscore from '../assets/images/nutriscore.webp';
 import nevermind from '../assets/images/nevermind.webp';
 import magnets from '../assets/images/magnets.webp';
 import megot from '../assets/images/megot.webp';
-import mcqueen from '../assets/images/mcqueen.webp';
 import moto from '../assets/images/moto.webp';
 import lustre from '../assets/images/lustre.webp';
 import lavaverte from '../assets/images/lavaverte.webp';
@@ -109,23 +101,18 @@ import lavarouge from '../assets/images/lavarouge.webp';
 import jelly from '../assets/images/jelly.webp';
 import kaki from '../assets/images/kaki.webp';
 import jackdaniels from '../assets/images/jackdaniels.webp';
-import gratis from '../assets/images/gratis.webp';
 import girlboss from '../assets/images/girlboss.webp';
 import fashion from '../assets/images/fashion.webp';
-import fraiche from '../assets/images/fraiche.webp';
 import faucet from '../assets/images/faucet.webp';
 import fraise2 from '../assets/images/fraise2.webp';
 import flixbus from '../assets/images/flixbus.webp';
 import fall2 from '../assets/images/fall2.webp';
 import evian from '../assets/images/evian.webp';
-import dyson from '../assets/images/dyson.webp';
-import enchufe from '../assets/images/enchufe.webp';
 import cookies from '../assets/images/cookies.webp';
 import chose from '../assets/images/chose.webp';
 import coneclou from '../assets/images/coneclou.webp';
 import candyup from '../assets/images/candyup.webp';
 import chocolatona from '../assets/images/chocolatona.webp';
-import chaussure from '../assets/images/chaussure.webp';
 import bibimmyeon from '../assets/images/bibimmyeon.webp';
 import bettina from '../assets/images/bettina.webp';
 import usb from '../assets/images/usb.webp';
@@ -135,9 +122,6 @@ import voiture from '../assets/images/voiture.webp';
 import burger from '../assets/images/burger.webp';
 import basque from '../assets/images/basque.webp';
 import biscuits from '../assets/images/biscuits.webp';
-import brule from '../assets/images/brule.webp';
-import camera from '../assets/images/camera.webp';
-import chaine from '../assets/images/chaine.webp';
 import ciseaux from '../assets/images/ciseaux.webp';
 import coeur from '../assets/images/coeur.webp';
 import cookie2 from '../assets/images/cookie2.webp';
@@ -182,21 +166,21 @@ const Carousel = forwardRef((props, ref) => {
 
   // Complete image array with all your images
   const completeImageArray = [
-    gel, couple, flower, fragile, framboise, hair, handi, hotdog,
+    gel, flower, framboise, hair, handi, hotdog,
     petitpois, soap, mop, manipuladora, sun, woman, playboy,
     stanley, plant, chico, paris, soup, shoes, signal,
     local, chair, tube, sunset, spider, savon, purple, melon,
-    green, chaise, car, amethyst, treize, relax, doliprane, cookie, cats,
+    green, chaise, car, amethyst, treize, relax, doliprane, cats,
     ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
-    orange, guy, cone, cables, carrots, chairs, fraise, papier, lime, oranges,
-    orb, salsa, seau, tpe, girl, brain, danette, diesel, girlstop, fall, ice,
+    orange, guy, cone, cables, carrots, chairs, fraise, papier, oranges,
+    orb, salsa, seau, tpe, girl, brain, danette, diesel, girlstop, fall,
     jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
     truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina,
-    singe, sink, relax2, robot, plage, rainbow, plaque, poubelle2, passoire, 
-    nutriscore, nevermind, magnets, megot, mcqueen, moto, lustre, lavaverte, lavarouge, jelly, kaki,
-    jackdaniels, gratis, girlboss, fashion, fraiche, faucet, fraise2, flixbus, fall2, evian,
-    dyson, enchufe, cookies, chose, coneclou, candyup, chocolatona, chaussure, burger, bibimmyeon, bettina,
-    usb, vodka, aniosafe, voiture, basque, biscuits, brule, camera, chaine, ciseaux, coeur,
+    singe, sink, relax2, robot, plage, plaque, poubelle2,
+    nutriscore, nevermind, magnets, megot, moto, lustre, lavaverte, lavarouge, jelly, kaki,
+    jackdaniels, girlboss, fashion, faucet, fraise2, flixbus, fall2, evian,
+    cookies, chose, coneclou, candyup, chocolatona, burger, bibimmyeon, bettina,
+    usb, vodka, aniosafe, voiture, basque, biscuits, ciseaux, coeur,
     cookie2, coupant, 
     fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
     jaune, monstrecookie, pancakes, plateau,
