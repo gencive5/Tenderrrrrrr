@@ -44,7 +44,6 @@ import orange from '../assets/images/orange.webp';
 import guy from '../assets/images/guy2.webp';
 import cone from '../assets/images/cone.webp';
 import cables from '../assets/images/cables.webp';
-import carrots from '../assets/images/carrots.webp';
 import chairs from '../assets/images/chairs.webp';
 import fraise from '../assets/images/fraise.webp';
 import papier from '../assets/images/papier.webp';
@@ -159,14 +158,14 @@ const Carousel = forwardRef((props, ref) => {
     petitpois, soap, manipuladora, sun, woman, playboy,
     stanley, plant, chico, paris, shoes, signal,
     local, chair, tube, sunset, spider, savon, purple, melon,
-    car, amethyst, treize, relax, doliprane, cats,
+    amethyst, treize, relax, doliprane, cats,
     ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
-    orange, guy, cone, cables, carrots, chairs, fraise, papier, oranges,
+    orange, guy, cone, cables, chairs, fraise, papier, oranges,
     orb, salsa, seau, tpe, girl, danette, diesel, girlstop, fall,
     jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
     truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina,
     singe, sink, relax2, robot, plage, plaque, poubelle2,
-    nutriscore, nevermind, magnets, megot, moto, lustre, lavaverte, lavarouge, jelly, kaki,
+    nutriscore, nevermind, magnets, megot, lustre, lavaverte, lavarouge, jelly, kaki,
     jackdaniels, girlboss, fashion, faucet, flixbus, fall2, evian,
     cookies, coneclou, candyup, chocolatona, burger, bettina,
     vodka, aniosafe, voiture, basque, biscuits, ciseaux, coeur,
