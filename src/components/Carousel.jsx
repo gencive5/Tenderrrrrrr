@@ -7,7 +7,6 @@ import hair from '../assets/images/hair.webp';
 import handi from '../assets/images/handi.webp';
 import hotdog from '../assets/images/hotdog.webp';
 import manipuladora from '../assets/images/manipuladora.webp';
-import mop from '../assets/images/mop.webp';
 import paris from '../assets/images/paris.webp';
 import petitpois from '../assets/images/petitpois.webp';
 import plant from '../assets/images/plant.webp';
@@ -17,7 +16,6 @@ import soap from '../assets/images/soap.webp';
 import sun from '../assets/images/sun.webp';
 import woman from '../assets/images/woman.webp';
 import gel from '../assets/images/gel.webp';
-import soup from '../assets/images/soup.webp';
 import shoes from '../assets/images/shoes.webp';
 import signal from '../assets/images/signal.webp';
 import local from '../assets/images/local.webp';
@@ -28,8 +26,6 @@ import spider from '../assets/images/spider.webp';
 import savon from '../assets/images/savon.webp';
 import purple from '../assets/images/purple.webp';
 import melon from '../assets/images/melon.webp';
-import green from '../assets/images/green.webp';
-import chaise from '../assets/images/chaise.webp';
 import car from '../assets/images/car.webp';
 import amethyst from '../assets/images/amethyst.webp';
 import treize from '../assets/images/treize.webp';
@@ -59,7 +55,6 @@ import seau from '../assets/images/seau.webp';
 import tpe from '../assets/images/tpe.webp';
 import girl from '../assets/images/girl.webp';
 import stanley from '../assets/images/stanleymax.webp';
-import brain from '../assets/images/brain.webp';
 import danette from '../assets/images/danette.webp';
 import diesel from '../assets/images/diesel.webp';
 import fall from '../assets/images/fall.webp';
@@ -104,18 +99,14 @@ import jackdaniels from '../assets/images/jackdaniels.webp';
 import girlboss from '../assets/images/girlboss.webp';
 import fashion from '../assets/images/fashion.webp';
 import faucet from '../assets/images/faucet.webp';
-import fraise2 from '../assets/images/fraise2.webp';
 import flixbus from '../assets/images/flixbus.webp';
 import fall2 from '../assets/images/fall2.webp';
 import evian from '../assets/images/evian.webp';
 import cookies from '../assets/images/cookies.webp';
-import chose from '../assets/images/chose.webp';
 import coneclou from '../assets/images/coneclou.webp';
 import candyup from '../assets/images/candyup.webp';
 import chocolatona from '../assets/images/chocolatona.webp';
-import bibimmyeon from '../assets/images/bibimmyeon.webp';
 import bettina from '../assets/images/bettina.webp';
-import usb from '../assets/images/usb.webp';
 import vodka from '../assets/images/vodka.webp';
 import aniosafe from '../assets/images/aniosafe.webp';
 import voiture from '../assets/images/voiture.webp';
@@ -128,14 +119,12 @@ import cookie2 from '../assets/images/cookie2.webp';
 import coupant from '../assets/images/coupant.webp';
 import fantomes from '../assets/images/fantomes.webp';
 import fauteuilnoir from '../assets/images/fauteuilnoir.webp';
-import fauteuilsrouges from '../assets/images/fauteuilsrouges.webp';
 import fruity from '../assets/images/fruity.webp';
 import groupe from '../assets/images/groupe.webp';
 import guyhoquet from '../assets/images/guyhoquet.webp';
 import hortensia from '../assets/images/hortensia.webp';
 import jaune from '../assets/images/jaune.webp';
 import monstrecookie from '../assets/images/monstrecookie.webp';
-import pancakes from '../assets/images/pancakes.webp';
 import plateau from '../assets/images/plateau.webp';
 import radiateur from '../assets/images/radiateur.webp';
 import sacpoubelle from '../assets/images/sacpoubelle.webp';
@@ -167,23 +156,23 @@ const Carousel = forwardRef((props, ref) => {
   // Complete image array with all your images
   const completeImageArray = [
     gel, flower, framboise, hair, handi, hotdog,
-    petitpois, soap, mop, manipuladora, sun, woman, playboy,
-    stanley, plant, chico, paris, soup, shoes, signal,
+    petitpois, soap, manipuladora, sun, woman, playboy,
+    stanley, plant, chico, paris, shoes, signal,
     local, chair, tube, sunset, spider, savon, purple, melon,
-    green, chaise, car, amethyst, treize, relax, doliprane, cats,
+    car, amethyst, treize, relax, doliprane, cats,
     ex, ghost, mommy, normal, pal, tomatos, tortilla, wolves,
     orange, guy, cone, cables, carrots, chairs, fraise, papier, oranges,
-    orb, salsa, seau, tpe, girl, brain, danette, diesel, girlstop, fall,
+    orb, salsa, seau, tpe, girl, danette, diesel, girlstop, fall,
     jellyblue, jellypink, leopard, lush, pearls, pole, rolex, tin, spray, trays,
     truck, tapis, pantoufles, crakeo, lundi, kim, spongedaddy, sport, tortina,
     singe, sink, relax2, robot, plage, plaque, poubelle2,
     nutriscore, nevermind, magnets, megot, moto, lustre, lavaverte, lavarouge, jelly, kaki,
-    jackdaniels, girlboss, fashion, faucet, fraise2, flixbus, fall2, evian,
-    cookies, chose, coneclou, candyup, chocolatona, burger, bibimmyeon, bettina,
-    usb, vodka, aniosafe, voiture, basque, biscuits, ciseaux, coeur,
+    jackdaniels, girlboss, fashion, faucet, flixbus, fall2, evian,
+    cookies, coneclou, candyup, chocolatona, burger, bettina,
+    vodka, aniosafe, voiture, basque, biscuits, ciseaux, coeur,
     cookie2, coupant, 
-    fantomes, fauteuilnoir, fauteuilsrouges, fruity, groupe, guyhoquet, hortensia,
-    jaune, monstrecookie, pancakes, plateau,
+    fantomes, fauteuilnoir, fruity, groupe, guyhoquet, hortensia,
+    jaune, monstrecookie, plateau,
     radiateur, sacpoubelle, tablevoile, tortue, tube2, vanille,
     velo, matelas, tubesverts
   ];
